@@ -53,6 +53,7 @@ The project follows a standard React application structure, with a clear separat
 |-- App.jsx
 |-- main.jsx
 `-- index.css
+
 assets: Static assets like images and SVGs.
 
 components: Reusable React components, categorized into common, features, layout, and ui.
