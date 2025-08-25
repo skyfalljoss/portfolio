@@ -81,7 +81,7 @@ Clone the repo
 
 Bash
 
-git clone https://github.com/your-username/your-repository.git
+git clone https://github.com/skyfalljoss/portfolio/
 Install NPM packages
 
 Bash
