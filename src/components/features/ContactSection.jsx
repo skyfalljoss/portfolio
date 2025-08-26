@@ -179,7 +179,7 @@ const ContactSection = () => {
     {
       icon: MailIcon,
       title: 'Email',
-      href: 'pnguyen27@usf.edu',
+      href: 'https://mail.google.com/mail/u/0/?to=pnguyen27@usf.edu',
       color: 'hover:text-primary'
     }
   ];
