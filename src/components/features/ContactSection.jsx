@@ -147,7 +147,7 @@ const ContactSection = () => {
       icon: MailIcon,
       title: 'Email',
       value: 'pnguyen27@usf.edu',
-      href: 'https://mail.google.com/mail/u/0/?to=pnguyen27@usf.edu'
+      href: 'https://mail.google.com/mail/u/0/?to=pnguyen27@usf.edu#inbox?compose=CllgCJvqKRRfdbbgHKFhqpqFDxQZwznkhjzgjnhJNdqSxrKDVpsJgzxtfpzjwVwkfztvqxKZPFL'
     },
     {
       icon: PhoneIcon,
@@ -179,7 +179,7 @@ const ContactSection = () => {
     {
       icon: MailIcon,
       title: 'Email',
-      href: 'https://mail.google.com/mail/u/0/?to=pnguyen27@usf.edu',
+      href: 'https://mail.google.com/mail/u/0/?to=pnguyen27@usf.edu#inbox?compose=CllgCJvqKRRfdbbgHKFhqpqFDxQZwznkhjzgjnhJNdqSxrKDVpsJgzxtfpzjwVwkfztvqxKZPFL',
       color: 'hover:text-primary'
     }
   ];
