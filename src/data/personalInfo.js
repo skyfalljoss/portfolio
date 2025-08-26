@@ -1,4 +1,4 @@
-import porfileImage from "../public/images/profile.jpg";
+
 
 export const personalInfo = {
   // Basic Information
@@ -10,7 +10,7 @@ export const personalInfo = {
   location: "St.Petersburg, FL",
   
   // Images
-  heroImage: porfileImage,
+  heroImage: "./public/images/profile.jpg",
   aboutImage: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=500&h=600&fit=crop",
   
   // Hero Section
