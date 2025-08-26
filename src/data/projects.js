@@ -38,7 +38,7 @@ export const projects = [
     description: "This \"shelf-steam\" project is a perfect example of your skills in a lower-level language (C), which complements the higher-level Python projects you already have. It demonstrates your understanding of operating system concepts like process management and inter-process communication, which are highly valued and set you apart from many other candidates.",
     image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=500&h=300&fit=crop",
     githubUrl: "https://github.com/skyfalljoss/Shelf_steam",
-    tech: ["C", "Makefile", "POSIX API", "Unix/Linux", ],
+    tech: ["C", "Makefile", "POSIX API", "Unix/Linux"],
     category: "Other",
     featured: false
   },
@@ -49,7 +49,7 @@ export const projects = [
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop",
     githubUrl: "https://github.com/username/portfolio-website",
     liveUrl: "https://alex-portfolio.netlify.app",
-    tech: ["C", "Makefile", "POSIX API", "Unix/Linux", ],
+    tech: ["React", "Tailwind CSS", "Framer Motion"],
     category: "Frontend",
     featured: false
   },
