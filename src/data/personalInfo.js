@@ -30,7 +30,8 @@ export const personalInfo = {
     linkedin: "https://linkedin.com/",
     twitter: "https://twitter.com/",
     instagram: "https://instagram.com/",
-    email: "pnguyen27@usf.edu"
+    email: "https://mail.google.com/mail/u/0/?to=pnguyen27@usf.edu"
+    
   },
   
   // Experience
