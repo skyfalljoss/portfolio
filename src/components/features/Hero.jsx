@@ -41,8 +41,20 @@ const DownloadIcon = ({ size = 16, className = "" }) => (
 const Hero = ({ setCurrentPage }) => {
   const handleResumeDownload = () => {
     // Add resume download logic here
+    // Create a temporary link element
+    const link = document.createElement('a');
+    // Set the path to your resume PDF file
+    link.href = personalInfo.resume.url; // Update this path to your actual resume file
+    link.download = `${personalInfo.name.replace(/\s+/g, '_')}_Resume.pdf`; // Optional: custom filename
+    // Append to the document
+    document.body.appendChild(link);
+    // Trigger the download
+    link.click();
+    // Remove the link from the document
+    document.body.removeChild(link);
     console.log('Downloading resume...');
   };
+ 
 
   return (
     <section className="min-h-screen flex items-center pt-20 border-b border-gray-200 ">

@@ -4,7 +4,7 @@
 /*
 /* Custom CSS Variables */
 :root {
-  --primary: #FF6B35;
+  --primary: #fc571b;
   --secondary: #1E40AF;
   --success: #10B981;
   --warning: #F59E0B;
@@ -57,7 +57,8 @@ a {
 }
 
 a:hover {
-  color: #E55A2B;
+  color: #d66039;
+  
 }
 
 /* Custom Utility Classes */
