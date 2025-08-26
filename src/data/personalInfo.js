@@ -5,7 +5,7 @@ export const personalInfo = {
   // Basic Information
   name: "Phong Nguyen",
   firstName: "Phong",
-  title: "A full-stack developer based in Tampa Florida.",
+  title: "A software engineer enthusiast based in Tampa Florida.",
   email: "pnguyen27@usf.edu",
   phone: "+1 (727) 123-4567",
   location: "St.Petersburg, FL",
