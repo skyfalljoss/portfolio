@@ -69,7 +69,7 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
 
           <div class="flex items-center">
             <a
-              href="/"
+              href="/portfolio"
               class="flex-shrink-0 flex items-center hover:opacity-80 transition-opacity py-2"
             >
               <span class="ml-2 text-xl font-bold ">PN</span>

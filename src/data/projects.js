@@ -40,7 +40,7 @@ export const projects = [
     githubUrl: "https://github.com/skyfalljoss/Shelf_steam",
     tech: ["C", "Makefile", "POSIX API", "Unix/Linux"],
     category: "Other",
-    featured: false
+    featured: true
   },
   {
     id: 5,
