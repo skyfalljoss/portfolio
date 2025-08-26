@@ -6,8 +6,8 @@ export const projects = [
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop",
     githubUrl: "https://github.com/skyfalljoss/STOCK_CHATBOT",
     liveUrl: "https://ecommerce-demo.netlify.app",
-    tech: ["Python", "Flask", "Spacy", "Keras/TensorFlow", "Pandas", Streamlit],
-    category: "Back End",
+    tech: ["Python", "Flask", "Spacy", "Keras/TensorFlow", "Pandas", "Streamlit"],
+    category: "Back-End",
     featured: true
   },
   {
