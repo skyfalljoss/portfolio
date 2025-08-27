@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SectionTitle from '../common/SectionTitle';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
+import emailjs from '@emailjs/browser';
 
 // Custom SVG Icons as React components
 const MailIcon = ({ size = 20, className = "" }) => (
@@ -114,6 +115,7 @@ const ContactSection = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -126,20 +128,36 @@ const ContactSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setStatusMessage('');
     
     // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    // await new Promise(resolve => setTimeout(resolve, 1000));
     
+    const serviceID = 'service_dhy5p7g';
+    const templateID = 'template_gryphzl';
+    const publicKey = 'JkXH6SuNYtrQxc82l';
+
     // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
-    setIsSubmitting(false);
+    // setFormData({
+    //   name: '',
+    //   email: '',
+    //   subject: '',
+    //   message: ''
+    // });
+    // setIsSubmitting(false);
     
-    alert('Message sent successfully!');
+    emailjs.send(serviceID, templateID, formData, publicKey)
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        setStatusMessage({ type: 'success', text: 'Message sent successfully!' });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      }, (err) => {
+        console.log('FAILED...', err);
+        setStatusMessage({ type: 'error', text: 'Failed to send message. Please try again later.' });
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   const contactMethods = [
@@ -263,7 +281,12 @@ const ContactSection = () => {
                   placeholder="Tell me about your project..."
                 />
               </div>
-
+              {/* Status Message */}
+              {statusMessage && (
+                <div className={`p-4 rounded-lg text-sm ${statusMessage.type === 'success' ? 'bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200' : 'bg-red-100 dark:bg-red-900/50 text-red-800 dark:text-red-200'}`}>
+                  {statusMessage.text}
+                </div>
+              )}
               <Button
                 type="submit"
                 variant="primary"
