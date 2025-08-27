@@ -18,11 +18,12 @@ export const personalInfo = {
   heroDescription: " As a Computer Science student at the University of South Florida, I channel my passion for coding into crafting next generation of intelligent web applications. My toolkit is built on modern technologies like React, JS, Python, Flask and django... which I use to write clean, maintainable code focused on delivering exceptional user experiences. My journey from Vietnam to Florida has given me a unique, cross-cultural perspective that I apply to solving problems and designing intuitive interfaces that resonate with a global audience. I am eager to leverage my technical skills and dedicated work ethic to build the next generation of impactful.",
   
   // About Page
-  aboutTitle: "An illustrator and graphic designer based in New Orleans.",
+  aboutTitle: "A software engineer based in Florida.",
   aboutDescription: [
-    "With a background in  computer science, I specialize in creating web applications that are not only functional but also beautiful and intuitive. My journey in tech started over 5 years ago, and I've been passionate about crafting digital experiences ever since.",
-    "I work with modern technologies like React, Node.js, JS, and Python to build scalable applications. When I'm not coding, you'll find me exploring new design trends, contributing to open-source projects, or hiking in the beautiful Bay Area mountains.",
-    "I believe in writing clean, maintainable code and creating user experiences that make people's lives easier. Whether you're a startup looking to build your first product or an established company wanting to modernize your tech stack, I'd love to help bring your vision to life."
+    "My journey from Vietnam to Florida is more than a change of scenery; it's a metaphor for my approach to software engineering: always moving forward, adapting, and seeking new challenges. I am a backend specialist who architects the intelligent core of web applications.",
+    "I wield Python and its powerful ecosystems—Flask and Django—to build robust, scalable, and smart server-side systems. My passion is engineering the \"brain\" of an operation: creating sophisticated data pipelines, integrating fine-tuned AI models, and designing efficient APIs that transform complex logic into seamless user experiences. I don't just build applications; I engineer intelligent solutions that learn, adapt, and deliver real value.",
+    "When I'm not architecting databases or optimizing endpoints, I apply the same strategic thinking to video games and soccer, or find a different kind of bug to avoid while camping in the Florida wilderness.",
+    "I'm always excited to connect and collaborate on the next great project. Let's connect to discuss how we can build something intelligent together."
   ],
   
   // Social Links
@@ -69,11 +70,11 @@ export const personalInfo = {
   
   // Skills
   skills: {
-    frontend: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3", "JavaScript"],
-    backend: ["Node.js", "Express.js", "Python", "Django", "REST APIs", "GraphQL"],
-    database: ["PostgreSQL", "MongoDB", "Redis", "Firebase", "Prisma"],
-    tools: ["Git", "Docker", "AWS", "Vercel", "Figma", "VS Code", "Postman"],
-    other: ["Responsive Design", "Testing", "Agile", "UI/UX Design", "SEO"]
+    Languages: ["Python", "C/C++", "C#", "SQL", "HTML", "CSS", "JavaScript"],
+    Frameworks: ["Reactjs", "Django", "Flask", "Tailwindcss", "Bootstrap"],
+    database: ["MYSQL", "SQLite", "PostgreSQL", "MongoDB"],
+    tools: ["Git", "Docker",  "Figma", "VS Code", "Postman"],
+    other: ["Responsive Design", "Testing", "Agile", "UI/UX Design"]
   },
   
   // Statistics

@@ -3,6 +3,7 @@ import BlogCard from '../components/common/BlogCard';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import { blogPosts } from '../data/blogPosts';
+import ContactSection from '../components/features/ContactSection';
 
 // Custom SVG Icons as React components
 const ArrowLeftIcon = ({ size = 16, className = "" }) => (
@@ -401,6 +402,9 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
               </Button>
             </div>
           </Card>
+        </div>
+        <div className="mt-16 bg-white rounded-2xl p-8 md:p-12 shadow-lg">
+            <ContactSection />
         </div>
       </div>
     </div>

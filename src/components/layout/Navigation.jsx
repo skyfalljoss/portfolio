@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "../ui/Button";
-
+import logo from '../../assets/images/logo.png';
 // Custom SVG Icons as React components
 const ArrowRightIcon = ({ size = 16, className = "" }) => (
   <svg
@@ -88,7 +88,12 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
               onClick={() => handleNavClick('home')}
               className="flex-shrink-0 flex items-center hover:opacity-80 transition-opacity py-2"
             >
-              <span className="ml-2 text-xl font-bold">PN</span>
+              {/* <span className="ml-2 text-xl font-bold">PN</span> */}
+              <img 
+                src={logo}
+                alt="PN Logo"
+                className="h-12 w-auto ml-2"
+              />
             </a>
           </div>
 
@@ -202,7 +207,7 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
               </a>
             </div>
             <div className="mt-3 px-2">
-                <a href="#contact-info" onClick={() => setIsMenuOpen(false)}>
+                <a href="http://localhost:5173/portfolio#contact-info" onClick={() => setIsMenuOpen(false)}>
                     <Button variant="primary" size="md" className="w-full">
                         <span>Hire Me</span>
                         <ArrowRightIcon size={16} />
