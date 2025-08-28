@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "../ui/Button";
 import logo from '../../assets/images/logo.png';
+import ThemeSwitcher from "../ui/ThemeSwitcher";
 // Custom SVG Icons as React components
 const ArrowRightIcon = ({ size = 16, className = "" }) => (
   <svg
@@ -63,7 +64,7 @@ const XIcon = ({ size = 24, className = "" }) => (
 );
 
 
-const Navigation = ({ currentPage, setCurrentPage }) => {
+const Navigation = ({ currentPage, setCurrentPage, theme, toggleTheme}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
@@ -78,7 +79,7 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
   };
 
   return (
-    <nav className="fixed top-0 w-full z-50 border-b border-gray-200 bg-white bg-opacity-90 backdrop-blur-sm">
+    <nav className="fixed top-0 w-full z-50 border-b border-gray-200 bg-white/90 backdrop-blur-sm dark:border-gray-700 ">
       <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
@@ -122,6 +123,7 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
 
           {/* Desktop Social Links & CTA */}
           <div className="hidden md:!flex items-center space-x-2">
+            <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
             <a
               href="https://github.com"
               target="_blank"
@@ -185,8 +187,9 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
               </a>
             ))}
           </div>
-          <div className="pt-4 pb-3 border-t border-gray-200">
+          <div className="pt-4 pb-3 border-t border-gray-200 border-gray-200 dark:border-gray-700">
             <div className="flex items-center justify-center px-5 space-x-4">
+              <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
               <a
                 href="https://github.com"
                 target="_blank"

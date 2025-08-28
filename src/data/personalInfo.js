@@ -1,4 +1,4 @@
-import profile from '../assets/images/profile.jpg';
+import profile from '../assets/images/profile.jpeg';
 import resumeFile from '../assets/images/resume.pdf';
 
 export const personalInfo = {
@@ -12,7 +12,7 @@ export const personalInfo = {
   
   // Images
   heroImage: profile,
-  aboutImage: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=500&h=600&fit=crop",
+  aboutImage: profile,
   
   // Hero Section
   heroDescription: " As a Computer Science student at the University of South Florida, I channel my passion for coding into crafting next generation of intelligent web applications. My toolkit is built on modern technologies like React, JS, Python, Flask and django... which I use to write clean, maintainable code focused on delivering exceptional user experiences. My journey from Vietnam to Florida has given me a unique, cross-cultural perspective that I apply to solving problems and designing intuitive interfaces that resonate with a global audience. I am eager to leverage my technical skills and dedicated work ethic to build the next generation of impactful.",

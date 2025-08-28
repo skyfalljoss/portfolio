@@ -99,15 +99,16 @@ const ProjectCard = ({ project }) => {
               <ExternalLinkIcon size={12} className="opacity-0 group-hover/link:opacity-100 transition-opacity" />
             </button>
 
-            {project.liveUrl && (
+            {/* {project.liveUrl && (
               <button
                 onClick={handleLiveClick}
                 className="inline-flex items-center space-x-2 text-gray-600 hover:text-primary transition-colors group/link"
+                disabled="true"
               >
                 <span className="text-sm font-medium">Live Demo</span>
                 <ExternalLinkIcon size={12} className="opacity-0 group-hover/link:opacity-100 transition-opacity" />
               </button>
-            )}
+            )} */}
           </div>
         </Card.Footer>
       </div>

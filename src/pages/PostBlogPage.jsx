@@ -336,13 +336,13 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
               <Card padding="md">
                 <div className="text-center">
                   <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
-                    alt="Alex Johnson"
+                    src="https://avatars.githubusercontent.com/u/583231?v=4"
+                    alt="Phong Nguyen"
                     className="w-16 h-16 rounded-full mx-auto mb-4"
                   />
-                  <h4 className="font-semibold text-gray-900 mb-2">Alex Johnson</h4>
+                  <h4 className="font-semibold text-gray-900 mb-2">Phong Nguyen</h4>
                   <p className="text-sm text-gray-600 mb-4">
-                    Full-stack developer passionate about creating beautiful, functional web applications.
+                    A software engineer based in Tampa Florida.
                   </p>
                   <Button variant="outline" size="sm" className="w-full">
                     Follow
@@ -351,7 +351,7 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
               </Card>
 
               {/* Newsletter */}
-              <Card padding="md" className="bg-primary/5">
+              {/* <Card padding="md" className="bg-primary/5">
                 <h3 className="font-semibold text-gray-900 mb-2">Stay Updated</h3>
                 <p className="text-sm text-gray-600 mb-4">
                   Get the latest articles delivered to your inbox.
@@ -366,7 +366,7 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
                     Subscribe
                   </Button>
                 </div>
-              </Card>
+              </Card> */}
             </div>
           </aside>
         </div>

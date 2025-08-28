@@ -29,6 +29,7 @@ const LatestWork = ({ setCurrentPage }) => {
   const handleViewAllProjects = () => {
     // Navigate to a projects page or portfolio section
     console.log('Navigate to all projects');
+    setCurrentPage('projects');
   };
 
   return (

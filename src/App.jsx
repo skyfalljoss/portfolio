@@ -1,10 +1,11 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navigation from './components/layout/Navigation';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import BlogPage from './pages/BlogPage';
 import PostBlogPage from './pages/PostBlogPage';
+import ProjectsPage from './pages/ProjectsPage';
 import './styles/globals.css';
 
 // const App = () => {
@@ -20,6 +21,24 @@ import './styles/globals.css';
 // export default App
 
 const App = () => {
+
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+
+  useEffect(() => {
+    if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      localStorage.setItem('theme', theme);
+    }, [theme]);
+
+    const toggleTheme = () => {
+      setTheme(theme === 'light' ? 'dark' : 'light');
+    };
+
+
+
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedPost, setSelectedPost] = useState(null);
 
@@ -49,6 +68,8 @@ const App = () => {
             setCurrentPage={setCurrentPage} 
           />
         );
+      case 'projects':
+        return <ProjectsPage setCurrentPage={setCurrentPage} />; 
       default:
         return (
           <HomePage 
@@ -64,6 +85,8 @@ const App = () => {
       <Navigation
         currentPage={currentPage} 
         setCurrentPage={setCurrentPage} 
+        theme={theme}
+        toggleTheme={toggleTheme}
       />
       <main>
         {renderPage()}
