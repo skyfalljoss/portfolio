@@ -113,11 +113,11 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
 
         {/* Search and Filter Section */}
         <div className="bg-white rounded-xl shadow-lg p-6 mb-12">
-          <div className="grid md:grid-cols-4 gap-4">
+          <div className="grid md:grid-cols-4 gap-4 ">
             {/* Search Input */}
             <div className="relative md:col-span-2">
               <SearchIcon
-                size={20}
+                size={18}
                 className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
               />
               <input
@@ -133,20 +133,21 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
             {(searchTerm ||
               selectedCategory !== "all" ||
               sortBy !== "newest") && (
-              <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
-                <div className="flex items-center space-x-4 text-sm text-gray-600">
-                  <span>
+              <div className="flex items-center justify-between relative md:col-span-2">
+                <div className="flex items-center text-sm text-gray-600">
+                  <span className="mx-4">
                     Showing {filteredPosts.length} of {blogPosts.length}{" "}
                     articles
                   </span>
-                  {searchTerm && <span>• Searching for "{searchTerm}"</span>}
+                  {searchTerm && <span>•Searching for "{searchTerm}"</span>}
                   {selectedCategory !== "all" && (
-                    <span>• Category: {selectedCategory}</span>
+                    <span className="mx-4">• Category: {selectedCategory}</span>
                   )}
-                </div>
-                <Button variant="ghost" size="sm" onClick={handleClearFilters}>
+                  <Button className="mx-4" variant="secondary" size="sm" onClick={handleClearFilters}>
                   Clear Filters
                 </Button>
+                </div>
+                
               </div>
             )}
           </div>
@@ -164,9 +165,9 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
         ) : (
           /* No Results */
           <div className="text-center py-16">
-            <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            {/* <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <SearchIcon size={32} className="text-gray-400" />
-            </div>
+            </div> */}
             <h3 className="text-xl font-semibold text-gray-900 mb-2">
               No articles found
             </h3>

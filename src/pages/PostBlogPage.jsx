@@ -224,14 +224,14 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
           {/* Action Buttons */}
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <Button
+              {/* <Button
                 variant="outline"
                 size="sm"
                 onClick={handleBookmark}
               >
                 <BookmarkIcon size={16} />
                 <span>Bookmark</span>
-              </Button>
+              </Button> */}
             </div>
 
             <div className="flex items-center space-x-2">
@@ -260,7 +260,7 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
       </div>
 
       {/* Article Content */}
-      <div className="max-w-4xl mx-auto px-6 py-12">
+      <div className="max-w-4xl mx-auto px-6 py-12" id ="introduction">
         <div className="grid lg:grid-cols-4 gap-12">
           {/* Main Content */}
           <article className="lg:col-span-3">
@@ -272,7 +272,7 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
             />
 
             {/* Article Body */}
-            <div className="prose prose-lg max-w-none">
+            <div className="prose prose-lg max-w-none" id="conclusion">
               {selectedPost.content.split('\n\n').map((paragraph, index) => (
                 <p key={index} className="text-gray-700 leading-relaxed mb-6 text-lg">
                   {paragraph}
@@ -281,7 +281,7 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
             </div>
 
             {/* Article Footer */}
-            <div className="mt-12 pt-8 border-t border-gray-200">
+            <div className="mt-12 pt-8 border-t border-gray-200" >
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
                   {selectedPost.tags && selectedPost.tags.map((tag, index) => (
@@ -314,7 +314,7 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
                       Introduction
                     </a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a href="#getting-started" className="text-gray-600 hover:text-primary transition-colors">
                       Getting Started
                     </a>
@@ -328,7 +328,7 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
                     <a href="#conclusion" className="text-gray-600 hover:text-primary transition-colors">
                       Conclusion
                     </a>
-                  </li>
+                  </li> */}
                 </ul>
               </Card>
 
@@ -344,9 +344,9 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
                   <p className="text-sm text-gray-600 mb-4">
                     A software engineer based in Tampa Florida.
                   </p>
-                  <Button variant="outline" size="sm" className="w-full">
+                  {/* <Button variant="outline" size="sm" className="w-full">
                     Follow
-                  </Button>
+                  </Button> */}
                 </div>
               </Card>
 
@@ -397,9 +397,12 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
               <p className="text-gray-600 mb-6">
                 Share your thoughts and connect with other developers in the comments below.
               </p>
-              <Button variant="primary">
-                Add Comment
-              </Button>
+              <a href="https://discord.com/" target="_blank" rel="noopener noreferrer">
+                <Button variant="primary" >
+                  Add Comment
+                </Button>
+              </a>
+              
             </div>
           </Card>
         </div>
