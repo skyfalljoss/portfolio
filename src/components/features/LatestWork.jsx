@@ -70,7 +70,7 @@ const LatestWork = ({ setCurrentPage }) => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
             {[
-              'React', 'TypeScript', 'Node.js', 'Python', 'MongoDB', 'PostgreSQL'
+              'React', 'JavaScript', 'Node.js', 'Python', 'Flask', 'Django','MYSQL', 'Tailwindcss',
             ].map((tech, index) => (
               <div
                 key={index}
