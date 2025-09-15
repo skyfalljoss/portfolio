@@ -56,18 +56,8 @@ export const projects = [
     tech: ["React", "Tailwind CSS", "Framer Motion"],
     category: "Frontend",
     featured: false
-  },
-  {
-    id: 6,
-    title: "Blog CMS",
-    description: "Content Management System for blogs with rich text editor, media management, SEO optimization, and multi-user support.",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68e2c6b696?w=500&h=300&fit=crop",
-    githubUrl: "https://github.com/username/blog-cms",
-    liveUrl: "https://blog-cms-demo.netlify.app",
-    tech: ["Next.js", "Prisma", "PostgreSQL", "Tailwind CSS"],
-    category: "Full Stack",
-    featured: false
   }
+ 
 ];
 
 export const getProjectById = (id) => {

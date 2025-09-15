@@ -28,7 +28,7 @@ export const personalInfo = {
   
   // Social Links
   socialLinks: {
-    github: "https://github.com/",
+    github: "https://github.com/skyfalljoss",
     linkedin: "https://linkedin.com/",
     twitter: "https://twitter.com/",
     instagram: "https://instagram.com/",
@@ -38,34 +38,7 @@ export const personalInfo = {
   
   // Experience
   experience: [
-    {
-      position: "Senior Full Stack Developer",
-      company: "Tech Innovations Inc.",
-      period: "2022 - Present",
-      description: "Leading development of scalable web applications using React, Node.js, and cloud technologies. Mentoring junior developers and architecting solutions for complex business requirements.",
-      technologies: ["React", "Node.js", "TypeScript", "AWS", "PostgreSQL"]
-    },
-    {
-      position: "Full Stack Developer",
-      company: "Digital Solutions Co.",
-      period: "2020 - 2022",
-      description: "Developed and maintained multiple client projects including e-commerce platforms, content management systems, and custom web applications.",
-      technologies: ["React", "Express.js", "MongoDB", "HTML/CSS", "JavaScript"]
-    },
-    {
-      position: "Frontend Developer",
-      company: "StartupXYZ",
-      period: "2019 - 2020",
-      description: "Built responsive user interfaces and improved user experience for the company's main product. Collaborated closely with designers and backend developers.",
-      technologies: ["React", "Redux", "Sass", "Bootstrap", "Git"]
-    },
-    {
-      position: "Junior Web Developer",
-      company: "Web Agency Pro",
-      period: "2018 - 2019",
-      description: "Started my professional journey building websites for small businesses and learning modern web development practices.",
-      technologies: ["HTML", "CSS", "JavaScript", "WordPress", "PHP"]
-    }
+    
   ],
   
   // Skills
