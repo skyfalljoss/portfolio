@@ -3,24 +3,8 @@ import SectionTitle from '../common/SectionTitle';
 import ProjectCard from '../common/ProjectCard';
 import Button from '../ui/Button';
 import { projects } from '../../data/projects.js';
+import {ArrowRightIcon} from '../icons/icons.jsx'
 
-// Custom SVG Icon as React component
-const ArrowRightIcon = ({ size = 16, className = "" }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-    className={className}
-  >
-    <line x1="5" y1="12" x2="19" y2="12"/>
-    <polyline points="12,5 19,12 12,19"/>
-  </svg>
-);
 
 const LatestWork = ({ setCurrentPage }) => {
   // Show only the first 3 projects
@@ -68,9 +52,9 @@ const LatestWork = ({ setCurrentPage }) => {
             <p className="text-gray-600">Always learning and exploring new technologies</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 !md:grid-cols-4 lg:!grid-cols-4   gap-4">
             {[
-              'React', 'JavaScript', 'Node.js', 'Python', 'Flask', 'Django','MYSQL', 'Tailwindcss',
+              'React', 'JavaScript', 'Node.js', 'Python', 'Flask', 'Django','MYSQL','PostGreSQL', 'Tailwindcss', 'Bootstrap','Agile', 'Jira'
             ].map((tech, index) => (
               <div
                 key={index}
