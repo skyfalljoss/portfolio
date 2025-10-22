@@ -52,7 +52,7 @@ const BlogCard = ({ post, onClick, isSmall = false, showExcerpt = true }) => {
           className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
         />
         <div className="absolute top-4 left-4">
-          <span className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700">
+          <span className="bg-se backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700">
             {post.category || 'Development'}
           </span>
         </div>

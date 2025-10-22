@@ -71,7 +71,7 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 text-gray-900 dark:text-gray-20">
       <Navigation
         currentPage={currentPage} 
         setCurrentPage={setCurrentPage} 
