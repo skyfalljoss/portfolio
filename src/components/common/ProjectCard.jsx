@@ -9,12 +9,12 @@ const ProjectCard = ({ project }) => {
     window.open(project.githubUrl, "_blank", "noopener,noreferrer");
   };
 
-  // const handleLiveClick = (e) => {
-  //   e.stopPropagation();
-  //   if (project.liveUrl) {
-  //     window.open(project.liveUrl, "_blank", "noopener,noreferrer");
-  //   }
-  // };
+  const handleLiveClick = (e) => {
+    e.stopPropagation();
+    if (project.liveUrl) {
+      window.open(project.liveUrl, "_blank", "noopener,noreferrer");
+    }
+  };
 
   return (
     <Card hover={true} padding="none" className="group">
@@ -67,16 +67,15 @@ const ProjectCard = ({ project }) => {
               />
             </button>
 
-            {/* {project.liveUrl && (
+            {project.liveUrl && (
               <button
                 onClick={handleLiveClick}
-                className="inline-flex items-center space-x-2 text-gray-600 hover:text-primary transition-colors group/link"
-                disabled={true}
+                className="inline-flex items-center space-x-2 text-gray-600 hover:text-primary transition-colors group/link cursor-pointer"
               >
                 <span className="text-sm font-medium">Live Demo</span>
                 <ExternalLinkIcon size={12} className="opacity-0 group-hover/link:opacity-100 transition-opacity" />
               </button>
-            )} */}
+            )}
           </div>
         </Card.Footer>
       </div>

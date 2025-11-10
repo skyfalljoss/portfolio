@@ -9,8 +9,8 @@ export const projects = [
     title: "Loveable clone ",
     description: "Developed a full-stack SaaS application that leverages AI to generate, build, and deploy complete, functional websites from a single text prompt. The platform handles user authentication, tiered subscriptions, and executes AI-generated code in a secure, sandboxed cloud environment.",
     image: loveableImg,
-    githubUrl: "https://github.com/skyfalljoss/STOCK_CHATBOT",
-    liveUrl: "./",
+    githubUrl: "https://github.com/skyfalljoss/Loveable",
+    liveUrl: "https://loveable-two.vercel.app/",
     tech: [ "Next.js"," React 19", "TypeScript", "tRPC", "Prisma", "PostgreSQL", "Inngest", "OpenAI", "E2B", "Clerk", "Docker", "TailwindCSS", "Vercel"],
     category: "Full-stack",
     featured: true
