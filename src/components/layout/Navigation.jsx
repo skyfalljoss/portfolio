@@ -66,7 +66,7 @@ const Navigation = ({ currentPage, setCurrentPage, theme, toggleTheme}) => {
           <div className="hidden md:!flex items-center space-x-2">
             <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
             <a
-              href="https://github.com"
+              href="https://github.com/skyfalljoss/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-primary transition-colors p-2"
@@ -75,7 +75,7 @@ const Navigation = ({ currentPage, setCurrentPage, theme, toggleTheme}) => {
               <GithubIcon size={20} />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/phong-nguyen-3467a5207/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-primary transition-colors p-2"
@@ -132,7 +132,7 @@ const Navigation = ({ currentPage, setCurrentPage, theme, toggleTheme}) => {
             <div className="flex items-center justify-center px-5 space-x-4">
               <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
               <a
-                href="https://github.com"
+                href="https://github.com/skyfalljoss/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-primary transition-colors p-2"
@@ -141,7 +141,7 @@ const Navigation = ({ currentPage, setCurrentPage, theme, toggleTheme}) => {
                 <GithubIcon size={24} />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/phong-nguyen-3467a5207/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-primary transition-colors p-2"
@@ -151,7 +151,7 @@ const Navigation = ({ currentPage, setCurrentPage, theme, toggleTheme}) => {
               </a>
             </div>
             <div className="mt-3 px-2">
-                <a href="http://localhost:5173/portfolio#contact-info" onClick={() => setIsMenuOpen(false)}>
+                <a href="#contact-info" onClick={() => setIsMenuOpen(false)}>
                     <Button variant="primary" size="md" className="w-full">
                         <span>Hire Me</span>
                         <ArrowRightIcon size={16} />

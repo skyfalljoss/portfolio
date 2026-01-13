@@ -28,8 +28,8 @@ export const personalInfo = {
   
   // Social Links
   socialLinks: {
-    github: "https://github.com/skyfalljoss",
-    linkedin: "https://linkedin.com/",
+    github: "https://github.com/skyfalljoss/",
+    linkedin: "https://www.linkedin.com/in/phong-nguyen-3467a5207/",
     twitter: "https://twitter.com/",
     instagram: "https://instagram.com/",
     email: "https://mail.google.com/mail/u/0/?to=pnguyen27@usf.edu"
