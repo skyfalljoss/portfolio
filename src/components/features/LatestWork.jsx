@@ -4,6 +4,7 @@ import ProjectCard from '../common/ProjectCard';
 import Button from '../ui/Button';
 import { projects } from '../../data/projects.js';
 import {ArrowRightIcon} from '../icons/icons.jsx'
+import { motion } from 'framer-motion';
 
 
 const LatestWork = ({ setCurrentPage }) => {
@@ -26,10 +27,16 @@ const LatestWork = ({ setCurrentPage }) => {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {featuredProjects.map((project) => (
-            <div key={project.id} className="animate-fade-in-up">
+          {featuredProjects.map((project, index) => (
+            <motion.div 
+              key={project.id} 
+              initial={{ opacity: 0, x: -150 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, amount: 0.1 }}
+              transition={{ duration: 1.2, delay: index * 0.1, ease: "easeOut" }}
+            >
               <ProjectCard project={project} />
-            </div>
+            </motion.div>
           ))}
         </div>
 
@@ -56,12 +63,21 @@ const LatestWork = ({ setCurrentPage }) => {
             {[
               'React', 'JavaScript', 'Node.js', 'Python', 'Flask', 'Django','MYSQL','PostGreSQL', 'Tailwindcss', 'Bootstrap','Agile', 'Jira'
             ].map((tech, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-gray-50 dark:bg-white/5 rounded-lg p-4 text-center hover:bg-gray-100 dark:hover:bg-white/10 transition-colors duration-300 border border-transparent dark:border-white/10 backdrop-blur-sm"
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: false, amount: 0.1 }}
+                transition={{ 
+                  duration: 1.0, 
+                  delay: index * 0.05,
+                  type: "spring",
+                  stiffness: 60 
+                }}
+                className="bg-gray-50/80 dark:bg-white/5 rounded-lg p-4 text-center hover:bg-white dark:hover:bg-white/10 transition-colors duration-300 border border-gray-100 dark:border-white/10 backdrop-blur-sm shadow-sm"
               >
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-200">{tech}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

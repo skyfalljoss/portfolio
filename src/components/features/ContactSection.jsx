@@ -4,9 +4,23 @@ import Button from '../ui/Button';
 import Card from '../ui/Card';
 import emailjs from '@emailjs/browser';
 import {MailIcon, LinkedinIcon, GithubIcon, MapPinIcon, PhoneIcon, SendIcon } from '../icons/icons'
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
 
 const ContactSection = () => {
+  const containerRef = useRef(null);
+  
+  // Track scroll progress through the contact section
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Create parallax values - the form moves up faster, info moves slightly slower
+  const formY = useTransform(scrollYProgress, [0, 1], [150, -150]);
+  const infoY = useTransform(scrollYProgress, [0, 1], [50, -50]);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -104,7 +118,7 @@ const ContactSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-transparent transition-colors duration-300">
+    <section ref={containerRef} className="py-20 bg-transparent transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <SectionTitle
           title="Let's Work Together"
@@ -113,7 +127,10 @@ const ContactSection = () => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="bg-white/80 dark:bg-slate-900/60 rounded-xl p-8 backdrop-blur-md border border-gray-100 dark:border-white/10 shadow-lg transition-colors duration-300">
+          <motion.div 
+            style={{ y: formY }}
+            className="bg-white/80 dark:bg-slate-900/60 rounded-xl p-8 backdrop-blur-md border border-gray-100 dark:border-white/10 shadow-lg transition-colors duration-300"
+          >
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send Me a Message</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -208,10 +225,14 @@ const ContactSection = () => {
                 )}
               </Button>
             </form>
-          </div>
+          </motion.div>
 
           {/* Contact Information */}
-          <div className="space-y-8" id="contact-info">
+          <motion.div 
+            style={{ y: infoY }}
+            className="space-y-8" 
+            id="contact-info"
+          >
             <div>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Get In Touch</h3>
               <p className="text-gray-600 dark:text-gray-200 text-lg leading-relaxed mb-8 transition-colors duration-300">
@@ -269,7 +290,7 @@ const ContactSection = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -8,9 +8,11 @@ import PostBlogPage from './pages/PostBlogPage';
 import ProjectsPage from './pages/ProjectsPage';
 import DarkBackground from './components/layout/DarkBackground';
 import LightBackground from './components/layout/LightBackground';
+import StartupAnimation from './components/ui/StartupAnimation';
 import './styles/globals.css';
 
 const App = () => {
+  const [animationKey, setAnimationKey] = useState(0);
 
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
@@ -25,6 +27,7 @@ const App = () => {
 
     const toggleTheme = () => {
       setTheme(theme === 'light' ? 'dark' : 'light');
+      setAnimationKey(prev => prev + 1);
     };
 
 
@@ -72,6 +75,7 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-transparent text-gray-900 dark:text-gray-100 transition-colors duration-300">
+      <StartupAnimation key={animationKey} isThemeSwitch={animationKey > 0} theme={theme} />
       <DarkBackground theme={theme} />
       <LightBackground theme={theme} />
       <Navigation
