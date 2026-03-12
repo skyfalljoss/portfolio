@@ -18,18 +18,18 @@ const BlogCard = ({ post, onClick, isSmall = false, showExcerpt = true }) => {
           className="w-24 h-24 object-cover rounded-lg flex-shrink-0 transition-transform duration-300 group-hover:scale-105"
         />
         <div className="flex-1 min-w-0">
-          <div className="flex items-center space-x-2 text-sm text-gray-500 mb-2">
+          <div className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400 mb-2 transition-colors duration-300">
             <CalendarIcon size={12} />
             <span>{post.date}</span>
             <span>•</span>
             <ClockIcon size={12} />
             <span>{post.readTime}</span>
           </div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 line-clamp-2 group-hover:text-primary dark:group-hover:text-primary-light transition-colors duration-300">
             {post.title}
           </h3>
           {showExcerpt && (
-            <p className="text-gray-600 text-sm line-clamp-2">
+            <p className="text-gray-600 dark:text-gray-200 text-sm line-clamp-2 transition-colors duration-300">
               {post.excerpt}
             </p>
           )}
@@ -52,7 +52,7 @@ const BlogCard = ({ post, onClick, isSmall = false, showExcerpt = true }) => {
           className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
         />
         <div className="absolute top-4 left-4">
-          <span className="bg-se backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700">
+          <span className="bg-white/80 dark:bg-black/60 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700 dark:text-gray-200 transition-colors duration-300">
             {post.category || 'Development'}
           </span>
         </div>
@@ -62,7 +62,7 @@ const BlogCard = ({ post, onClick, isSmall = false, showExcerpt = true }) => {
       <div className="p-6">
         <Card.Header>
           {/* Meta Information */}
-          <div className="flex items-center space-x-2 text-sm text-gray-500 mb-3">
+          <div className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400 mb-3 transition-colors duration-300">
             <CalendarIcon size={14} />
             <span>{post.date}</span>
             <span>•</span>
@@ -70,14 +70,14 @@ const BlogCard = ({ post, onClick, isSmall = false, showExcerpt = true }) => {
             <span>{post.readTime}</span>
           </div>
 
-          <h3 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-primary dark:group-hover:text-primary-light transition-colors duration-300">
             {post.title}
           </h3>
         </Card.Header>
 
         <Card.Body>
           {showExcerpt && (
-            <p className="text-gray-600 leading-relaxed line-clamp-3">
+            <p className="text-gray-600 dark:text-gray-200 leading-relaxed line-clamp-3 transition-colors duration-300">
               {post.excerpt}
             </p>
           )}
@@ -89,7 +89,7 @@ const BlogCard = ({ post, onClick, isSmall = false, showExcerpt = true }) => {
               {post.tags && post.tags.slice(0, 2).map((tag, index) => (
                 <span 
                   key={index} 
-                  className="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs"
+                  className="px-2 py-1 bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-200 rounded text-xs transition-colors duration-300"
                 >
                   {tag}
                 </span>

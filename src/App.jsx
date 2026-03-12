@@ -6,9 +6,9 @@ import AboutPage from './pages/AboutPage';
 import BlogPage from './pages/BlogPage';
 import PostBlogPage from './pages/PostBlogPage';
 import ProjectsPage from './pages/ProjectsPage';
+import DarkBackground from './components/layout/DarkBackground';
+import LightBackground from './components/layout/LightBackground';
 import './styles/globals.css';
-
-
 
 const App = () => {
 
@@ -71,7 +71,9 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900 dark:text-gray-20">
+    <div className="min-h-screen bg-transparent text-gray-900 dark:text-gray-100 transition-colors duration-300">
+      <DarkBackground theme={theme} />
+      <LightBackground theme={theme} />
       <Navigation
         currentPage={currentPage} 
         setCurrentPage={setCurrentPage} 

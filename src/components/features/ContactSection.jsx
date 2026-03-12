@@ -104,8 +104,8 @@ const ContactSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="py-20 bg-transparent transition-colors duration-300">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <SectionTitle
           title="Let's Work Together"
           subtitle="I'm always interested in new opportunities and exciting projects. Let's discuss how we can bring your ideas to life."
@@ -113,13 +113,13 @@ const ContactSection = () => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <Card padding="lg">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Send Me a Message</h3>
+          <div className="bg-white/80 dark:bg-slate-900/60 rounded-xl p-8 backdrop-blur-md border border-gray-100 dark:border-white/10 shadow-lg transition-colors duration-300">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send Me a Message</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                     Name *
                   </label>
                   <input
@@ -129,13 +129,13 @@ const ContactSection = () => {
                     required
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-white/20 dark:bg-white/5 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
                     placeholder="Your name"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                     Email *
                   </label>
                   <input
@@ -145,14 +145,14 @@ const ContactSection = () => {
                     required
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-white/20 dark:bg-white/5 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
                     placeholder="your@email.com"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                   Subject *
                 </label>
                 <input
@@ -162,13 +162,13 @@ const ContactSection = () => {
                   required
                   value={formData.subject}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-white/20 dark:bg-white/5 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
                   placeholder="Project discussion"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                   Message *
                 </label>
                 <textarea
@@ -178,7 +178,7 @@ const ContactSection = () => {
                   rows={5}
                   value={formData.message}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-vertical"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-white/20 dark:bg-white/5 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-vertical"
                   placeholder="Tell me about your project..."
                 />
               </div>
@@ -208,13 +208,13 @@ const ContactSection = () => {
                 )}
               </Button>
             </form>
-          </Card>
+          </div>
 
           {/* Contact Information */}
           <div className="space-y-8" id="contact-info">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Get In Touch</h3>
-              <p className="text-gray-600 text-lg leading-relaxed mb-8">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Get In Touch</h3>
+              <p className="text-gray-600 dark:text-gray-200 text-lg leading-relaxed mb-8 transition-colors duration-300">
                 I'm currently available for freelance work and full-time opportunities. 
                 Whether you have a question or just want to say hi, I'll try my best to get back to you!
               </p>
@@ -225,13 +225,13 @@ const ContactSection = () => {
               {contactMethods.map((method, index) => (
                 <div key={index} className="flex items-center space-x-4">
                   <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <method.icon size={20} className="text-primary" />
+                    <method.icon size={20} className="text-primary dark:text-primary-light" />
                   </div>
                   <div>
-                    <div className="font-medium text-gray-900">{method.title}</div>
+                    <div className="font-medium text-gray-900 dark:text-white">{method.title}</div>
                     <a
                       href={method.href}
-                      className="text-gray-600 hover:text-primary transition-colors"
+                      className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light transition-colors"
                     >
                       {method.value}
                     </a>
@@ -241,8 +241,8 @@ const ContactSection = () => {
             </div>
 
             {/* Social Links */}
-            <div className="pt-8 border-t border-gray-200">
-              <h4 className="text-lg font-semibold text-gray-900 mb-4">Connect With Me</h4>
+            <div className="pt-8 border-t border-gray-200 dark:border-white/10">
+              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Connect With Me</h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
                   <a
@@ -250,7 +250,7 @@ const ContactSection = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-gray-600 ${social.color} transition-all hover:scale-110`}
+                    className={`w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-lg flex items-center justify-center text-gray-600 dark:text-gray-200 ${social.color} transition-all hover:scale-110`}
                     title={social.title}
                   >
                     <social.icon size={20} />
@@ -260,15 +260,15 @@ const ContactSection = () => {
             </div>
 
             {/* Availability Status */}
-            <Card padding="md" className="bg-green-50 border border-green-200">
+            <div className="bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800/50 rounded-xl p-4 transition-colors duration-300">
               <div className="flex items-center space-x-3">
                 <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
                 <div>
-                  <div className="font-medium text-green-800">Available for Work</div>
-                  <div className="text-sm text-green-600">Currently accepting new projects</div>
+                  <div className="font-medium text-green-800 dark:text-green-300">Available for Work</div>
+                  <div className="text-sm text-green-600 dark:text-green-400">Currently accepting new projects</div>
                 </div>
               </div>
-            </Card>
+            </div>
           </div>
         </div>
       </div>

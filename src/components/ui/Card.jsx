@@ -8,7 +8,7 @@ const Card = ({
   onClick,
   ...props 
 }) => {
-  const baseClasses = 'bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300';
+  const baseClasses = 'bg-white/80 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md border border-gray-100 dark:border-white/10 rounded-xl shadow-lg overflow-hidden transition-all duration-300';
   
   const hoverClasses = hover 
     ? 'hover:shadow-xl hover:-translate-y-1 cursor-pointer' 
@@ -55,7 +55,7 @@ Card.Body = ({ children, className = '' }) => (
 
 // Card Footer Component
 Card.Footer = ({ children, className = '' }) => (
-  <div className={`mt-4 pt-4 border-t border-gray-100 ${className}`}>
+  <div className={`mt-4 pt-4 border-t border-gray-100 dark:border-white/10 ${className}`}>
     {children}
   </div>
 );

@@ -12,7 +12,7 @@ const ThemeSwitcher = ({ theme, toggleTheme }) => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none"
+      className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 focus:outline-none"
       aria-label="Toggle dark mode"
     >
       {theme === 'dark' ? <SunIcon /> : <MoonIcon />}

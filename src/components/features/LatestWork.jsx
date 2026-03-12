@@ -17,8 +17,8 @@ const LatestWork = ({ setCurrentPage }) => {
   };
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="py-20 bg-transparent transition-colors duration-300">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <SectionTitle
           title="Latest Work"
           subtitle="Here are some of my recent projects that showcase my skills in web development and design"
@@ -46,10 +46,10 @@ const LatestWork = ({ setCurrentPage }) => {
         </div>
 
         {/* Skills Preview */}
-        <div className="mt-16 pt-16 border-t border-gray-200 bg">
+        <div className="mt-16 pt-16 border-t border-gray-200 dark:border-white/10">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">Technologies I Work With</h3>
-            <p className="text-gray-600">Always learning and exploring new technologies</p>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">Technologies I Work With</h3>
+            <p className="text-gray-600 dark:text-gray-400 transition-colors duration-300">Always learning and exploring new technologies</p>
           </div>
 
           <div className="grid grid-cols-2 !md:grid-cols-4 lg:!grid-cols-4   gap-4">
@@ -58,9 +58,9 @@ const LatestWork = ({ setCurrentPage }) => {
             ].map((tech, index) => (
               <div
                 key={index}
-                className="bg-gray-50 rounded-lg p-4 text-center hover:bg-gray-100 transition-colors"
+                className="bg-gray-50 dark:bg-white/5 rounded-lg p-4 text-center hover:bg-gray-100 dark:hover:bg-white/10 transition-colors duration-300 border border-transparent dark:border-white/10 backdrop-blur-sm"
               >
-                <span className="text-sm font-medium text-gray-700">{tech}</span>
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-200">{tech}</span>
               </div>
             ))}
           </div>

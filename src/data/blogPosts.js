@@ -1,4 +1,5 @@
 export const blogPosts = [
+  
   {
     id: 1,
     title: "Building Scalable React Applications",

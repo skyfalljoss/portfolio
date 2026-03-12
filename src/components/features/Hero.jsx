@@ -23,27 +23,27 @@ const Hero = ({ setCurrentPage }) => {
  
 
   return (
-    <section className="min-h-screen flex items-center pt-20 border-b border-gray-200 ">
+    <section className="min-h-screen flex items-center pt-20 border-b border-gray-200 dark:border-white/10 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
         {/* Content Side */}
-        <div className="space-y-6 animate-fade-in">
+        <div className="space-y-6 animate-fade-in relative z-10">
           <div className="space-y-4">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white leading-tight transition-colors duration-300">
               Hello, I am{' '}
               <br />
               <span className="text-primary">{personalInfo.name}</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 font-medium">
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-200 font-medium transition-colors duration-300">
               {personalInfo.title}
             </p>
           </div>
 
-          <p className="text-lg text-gray-500 leading-relaxed max-w-lg">
+          <p className="text-lg text-gray-500 dark:text-gray-400 leading-relaxed max-w-lg transition-colors duration-300">
             {personalInfo.heroDescription}
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-6">
+          <div className="flex flex-col sm:flex-row gap-4 pt-6 mb-8">
             <Button 
               variant="secondary"
               size="lg"

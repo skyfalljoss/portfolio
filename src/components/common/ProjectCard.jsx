@@ -30,10 +30,10 @@ const ProjectCard = ({ project }) => {
       {/* Project Content */}
       <div className="p-6">
         <Card.Header>
-          <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary dark:group-hover:text-primary-light transition-colors duration-300">
             {project.title}
           </h3>
-          <p className="text-gray-600 text-sm leading-relaxed">
+          <p className="text-gray-600 dark:text-gray-200 text-sm leading-relaxed transition-colors duration-300">
             {project.description}
           </p>
         </Card.Header>
@@ -44,7 +44,7 @@ const ProjectCard = ({ project }) => {
             {project.tech.map((tech, index) => (
               <span
                 key={index}
-                className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium"
+                className="px-3 py-1 bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-gray-200 rounded-full text-sm font-medium transition-colors duration-300"
               >
                 {tech}
               </span>
@@ -57,7 +57,7 @@ const ProjectCard = ({ project }) => {
           <div className="flex items-center justify-between">
             <button
               onClick={handleGithubClick}
-              className="inline-flex items-center space-x-2 text-primary hover:text-orange-600 transition-colors group/link cursor-pointer"
+              className="inline-flex items-center space-x-2 text-primary dark:text-primary-light hover:text-orange-600 transition-colors group/link cursor-pointer"
             >
               <GithubIcon size={16} />
               <span className="text-sm font-medium">View Code</span>
@@ -70,7 +70,7 @@ const ProjectCard = ({ project }) => {
             {project.liveUrl && (
               <button
                 onClick={handleLiveClick}
-                className="inline-flex items-center space-x-2 text-gray-600 hover:text-primary transition-colors group/link cursor-pointer"
+                className="inline-flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light transition-colors group/link cursor-pointer"
               >
                 <span className="text-sm font-medium">Live Demo</span>
                 <ExternalLinkIcon size={12} className="opacity-0 group-hover/link:opacity-100 transition-opacity" />
