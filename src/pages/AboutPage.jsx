@@ -3,28 +3,13 @@ import SectionTitle from '../components/common/SectionTitle';
 import { personalInfo } from '../data/personalInfo';
 import ContactSection from '../components/features/ContactSection';
 // SVG Icon for the timeline
-const BriefcaseIcon = ({ className = "" }) => (
-  <svg 
-    className={className}
-    width="24" 
-    height="24" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-  >
-    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-  </svg>
-);
+// const BriefcaseIcon = ({ className = "" }) => (
 
 const AboutPage = () => {
-  const { aboutTitle, aboutDescription, aboutImage, skills, experience, stats } = personalInfo;
+  const { aboutTitle, aboutDescription, aboutImage, skills } = personalInfo;
 
   return (
-    <div className="pt-20 bg-white dark:bg-gray-900">
+    <div className="pt-20 bg-transparent transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6 py-16">
         <SectionTitle
           title="About Me"
@@ -55,7 +40,7 @@ const AboutPage = () => {
           <SectionTitle.Small title="My Skills" />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {Object.entries(skills).map(([category, skillList]) => (
-              <div key={category} className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+              <div key={category} className="bg-gray-50/80 dark:bg-white/5 border border-gray-100 dark:border-white/10 backdrop-blur-sm p-6 rounded-lg transition-colors duration-300">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 capitalize">{category}</h3>
                 <ul className="space-y-2">
                   {skillList.map((skill, index) => (

@@ -23,40 +23,40 @@ const SearchIcon = ({ size = 20, className = "" }) => (
   </svg>
 );
 
-const FilterIcon = ({ size = 20, className = "" }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <polygon points="22,3 2,3 10,12.46 10,19 14,21 14,12.46" />
-  </svg>
-);
-
-const CalendarIcon = ({ size = 20, className = "" }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-    <line x1="16" y1="2" x2="16" y2="6" />
-    <line x1="8" y1="2" x2="8" y2="6" />
-    <line x1="3" y1="10" x2="21" y2="10" />
-  </svg>
-);
+// const FilterIcon = ({ size = 20, className = "" }) => (
+//   <svg
+//     width={size}
+//     height={size}
+//     viewBox="0 0 24 24"
+//     fill="none"
+//     stroke="currentColor"
+//     strokeWidth="2"
+//     strokeLinecap="round"
+//     strokeLinejoin="round"
+//     className={className}
+//   >
+//     <polygon points="22,3 2,3 10,12.46 10,19 14,21 14,12.46" />
+//   </svg>
+// );
+//
+// const CalendarIcon = ({ size = 20, className = "" }) => (
+//   <svg
+//     width={size}
+//     height={size}
+//     viewBox="0 0 24 24"
+//     fill="none"
+//     stroke="currentColor"
+//     strokeWidth="2"
+//     strokeLinecap="round"
+//     strokeLinejoin="round"
+//     className={className}
+//   >
+//     <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+//     <line x1="16" y1="2" x2="16" y2="6" />
+//     <line x1="8" y1="2" x2="8" y2="6" />
+//     <line x1="3" y1="10" x2="21" y2="10" />
+//   </svg>
+// );
 
 const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -103,7 +103,7 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
   };
 
   return (
-    <div className="pt-20 min-h-screen bg-gray-50">
+    <div className="pt-20 min-h-screen bg-transparent transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6 py-16">
         {/* Page Header */}
         <SectionTitle
@@ -112,7 +112,7 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
         />
 
         {/* Search and Filter Section */}
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-12">
+        <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-md rounded-xl shadow-lg border border-gray-100 dark:border-white/10 p-6 mb-12 transition-colors duration-300">
           <div className="grid md:grid-cols-4 gap-4 ">
             {/* Search Input */}
             <div className="relative md:col-span-2">
@@ -125,7 +125,7 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
                 placeholder="Search articles..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-700 bg-transparent dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-300"
               />
             </div>
 
@@ -134,7 +134,7 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
               selectedCategory !== "all" ||
               sortBy !== "newest") && (
               <div className="flex items-center justify-between relative md:col-span-2">
-                <div className="flex items-center text-sm text-gray-600">
+                <div className="flex items-center text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">
                   <span className="mx-4">
                     Showing {filteredPosts.length} of {blogPosts.length}{" "}
                     articles
@@ -168,10 +168,10 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
             {/* <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <SearchIcon size={32} className="text-gray-400" />
             </div> */}
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 transition-colors duration-300">
               No articles found
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-600 dark:text-gray-300 mb-6 transition-colors duration-300">
               Try adjusting your search terms or filters to find what you're
               looking for.
             </p>
@@ -182,12 +182,12 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
         )}
 
         {/* Featured Categories */}
-        <div className="mt-16 pt-16 border-t border-gray-200">
+        <div className="mt-16 pt-16 border-t border-gray-200 dark:border-gray-700 transition-colors duration-300">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">
               Browse by Category
             </h3>
-            <p className="text-gray-600">Explore articles by topic</p>
+            <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">Explore articles by topic</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -199,12 +199,12 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
                 <div
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className="bg-white rounded-lg p-6 text-center cursor-pointer hover:shadow-lg transition-shadow"
+                  className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-md rounded-lg p-6 text-center border border-gray-100 dark:border-white/10 cursor-pointer hover:shadow-lg transition-all duration-300"
                 >
-                  <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                     {category}
                   </h4>
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
                     {categoryPosts.length} article
                     {categoryPosts.length !== 1 ? "s" : ""}
                   </p>
@@ -242,7 +242,7 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
           </div>
         </div> */}
         {/* Contact Section */}
-        <div className="mt-16 bg-white rounded-2xl p-8 md:p-12 shadow-lg">
+        <div className="mt-16 bg-white/80 dark:bg-slate-900/60 backdrop-blur-md rounded-2xl border border-gray-100 dark:border-white/10 p-8 md:p-12 shadow-lg transition-colors duration-300">
           <ContactSection />
         </div>
       </div>

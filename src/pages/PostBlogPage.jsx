@@ -79,21 +79,21 @@ const Share2Icon = ({ size = 16, className = "" }) => (
   </svg>
 );
 
-const BookmarkIcon = ({ size = 16, className = "" }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
-  </svg>
-);
+// const BookmarkIcon = ({ size = 16, className = "" }) => (
+//   <svg 
+//     width={size} 
+//     height={size} 
+//     viewBox="0 0 24 24" 
+//     fill="none" 
+//     stroke="currentColor" 
+//     strokeWidth="2" 
+//     strokeLinecap="round" 
+//     strokeLinejoin="round"
+//     className={className}
+//   >
+//     <path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
+//   </svg>
+// );
 
 const TwitterIcon = ({ size = 14, className = "" }) => (
   <svg 
@@ -142,9 +142,9 @@ const LinkedinIcon = ({ size = 14, className = "" }) => (
 const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
   if (!selectedPost) {
     return (
-      <div className="pt-20 min-h-screen bg-white flex items-center justify-center">
+      <div className="pt-20 min-h-screen bg-transparent transition-colors duration-300 flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">No post selected</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">No post selected</h2>
           <Button
             variant="primary"
             onClick={() => setCurrentPage('blog')}
@@ -181,15 +181,15 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
     window.open(shareUrl, '_blank', 'width=600,height=400');
   };
 
-  const handleBookmark = () => {
-    // Add bookmark functionality
-    console.log('Bookmark added');
-  };
+  // const handleBookmark = () => {
+  //   // Add bookmark functionality
+  //   console.log('Bookmark added');
+  // };
 
   return (
-    <div className="pt-20 bg-gray-50 min-h-screen">
+    <div className="pt-20 bg-transparent min-h-screen transition-colors duration-300">
       {/* Article Header */}
-      <div className="bg-white border-b border-gray-200">
+      <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-md border-b border-gray-200 dark:border-white/10 transition-colors duration-300">
         <div className="max-w-4xl mx-auto px-6 py-8">
           <button
             onClick={() => setCurrentPage('blog')}
@@ -212,11 +212,11 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
               </span>
             </div>
 
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-6 transition-colors duration-300">
               {selectedPost.title}
             </h1>
 
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">
               {selectedPost.excerpt}
             </p>
           </div>
@@ -274,20 +274,20 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
             {/* Article Body */}
             <div className="prose prose-lg max-w-none" id="conclusion">
               {selectedPost.content.split('\n\n').map((paragraph, index) => (
-                <p key={index} className="text-gray-700 leading-relaxed mb-6 text-lg">
+                <p key={index} className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-lg transition-colors duration-300">
                   {paragraph}
                 </p>
               ))}
             </div>
 
             {/* Article Footer */}
-            <div className="mt-12 pt-8 border-t border-gray-200" >
+            <div className="mt-12 pt-8 border-t border-gray-200 dark:border-white/10 transition-colors duration-300" >
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
                   {selectedPost.tags && selectedPost.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
+                      className="px-3 py-1 bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-gray-300 rounded-full text-sm transition-colors duration-300"
                     >
                       #{tag}
                     </span>
@@ -296,7 +296,7 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
                 
                 <div className="flex items-center space-x-2">
                   <Share2Icon size={16} className="text-gray-400" />
-                  <span className="text-sm text-gray-600">Share this article</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-400">Share this article</span>
                 </div>
               </div>
             </div>
@@ -307,10 +307,10 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
             <div className="sticky top-24 space-y-8">
               {/* Table of Contents */}
               <Card padding="md">
-                <h3 className="font-semibold text-gray-900 mb-4">Table of Contents</h3>
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-4 transition-colors duration-300">Table of Contents</h3>
                 <ul className="space-y-2 text-sm">
                   <li>
-                    <a href="#introduction" className="text-gray-600 hover:text-primary transition-colors">
+                    <a href="#introduction" className="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors duration-300">
                       Introduction
                     </a>
                   </li>
@@ -340,8 +340,8 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
                     alt="Phong Nguyen"
                     className="w-16 h-16 rounded-full mx-auto mb-4"
                   />
-                  <h4 className="font-semibold text-gray-900 mb-2">Phong Nguyen</h4>
-                  <p className="text-sm text-gray-600 mb-4">
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2 transition-colors duration-300">Phong Nguyen</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 transition-colors duration-300">
                     A software engineer based in Tampa Florida.
                   </p>
                   {/* <Button variant="outline" size="sm" className="w-full">
@@ -372,8 +372,8 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
         </div>
 
         {/* Related Posts */}
-        <div className="mt-16 pt-12 border-t border-gray-200">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Related Articles</h2>
+        <div className="mt-16 pt-12 border-t border-gray-200 dark:border-white/10 transition-colors duration-300">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 transition-colors duration-300">Related Articles</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {otherPosts.map((post) => (
               <BlogCard
@@ -386,15 +386,15 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
         </div>
 
         {/* Comments Section */}
-        <div className="mt-16 pt-12 border-t border-gray-200">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Comments</h2>
+        <div className="mt-16 pt-12 border-t border-gray-200 dark:border-white/10 transition-colors duration-300">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 transition-colors duration-300">Comments</h2>
           <Card padding="lg">
             <div className="text-center py-12">
-              <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-gray-100 dark:bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4 transition-colors duration-300">
                 <Share2Icon size={24} className="text-gray-400" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Join the Discussion</h3>
-              <p className="text-gray-600 mb-6">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 transition-colors duration-300">Join the Discussion</h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-6 transition-colors duration-300">
                 Share your thoughts and connect with other developers in the comments below.
               </p>
               <a href="https://discord.com/" target="_blank" rel="noopener noreferrer">
@@ -406,7 +406,7 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
             </div>
           </Card>
         </div>
-        <div className="mt-16 bg-white rounded-2xl p-8 md:p-12 shadow-lg">
+        <div className="mt-16 bg-white/80 dark:bg-slate-900/60 backdrop-blur-md border border-gray-100 dark:border-white/10 rounded-2xl p-8 md:p-12 shadow-lg transition-colors duration-300">
             <ContactSection />
         </div>
       </div>

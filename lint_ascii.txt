@@ -1,0 +1,26 @@
+
+> profile@0.0.0 lint
+> eslint .
+
+
+C:\Users\skyfa\Desktop\project\portfolio\profile\profile\src\components\features\BlogPreview.jsx
+  7:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\skyfa\Desktop\project\portfolio\profile\profile\src\components\features\ContactSection.jsx
+  7:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\skyfa\Desktop\project\portfolio\profile\profile\src\components\features\Hero.jsx
+  5:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\skyfa\Desktop\project\portfolio\profile\profile\src\components\features\LatestWork.jsx
+  7:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\skyfa\Desktop\project\portfolio\profile\profile\src\components\ui\StartupAnimation.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\skyfa\Desktop\project\portfolio\profile\profile\src\pages\AboutPage.jsx
+  24:61  error  'experience' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  24:73  error  'stats' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u       no-unused-vars
+
+??? 7 problems (7 errors, 0 warnings)
+
