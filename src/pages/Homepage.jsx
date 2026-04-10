@@ -7,19 +7,12 @@ import ContactSection from '../components/features/ContactSection';
 const HomePage = ({ setCurrentPage, setSelectedPost }) => {
   return (
     <div className="pt-0">
-      {/* Hero Section */}
       <Hero setCurrentPage={setCurrentPage} />
-      
-      {/* Latest Work Section */}
       <LatestWork setCurrentPage={setCurrentPage} />
-      
-      {/* Blog Preview Section */}
-      <BlogPreview 
-        setCurrentPage={setCurrentPage} 
-        setSelectedPost={setSelectedPost} 
+      <BlogPreview
+        setCurrentPage={setCurrentPage}
+        setSelectedPost={setSelectedPost}
       />
-      
-      {/* Contact Section */}
       <ContactSection />
     </div>
   );

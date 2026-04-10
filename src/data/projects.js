@@ -3,6 +3,8 @@ import dashboardImg from '../assets/images/stock-dashboard.jpg';
 import newsAggregatorImg from '../assets/images/news-aggregator.jpg';
 import loveableImg from '../assets/images/loveableImg.jpg'
 import videoGeneratorImg from '../assets/images/video-generator.jpg';
+import crmImg from '../assets/project-image/CRM.png';
+import campusNavigationImg from '../assets/project-image/campus.png';
 const projectsData = [
   {
     id: 1,
@@ -96,6 +98,28 @@ const projectsData = [
   },
   {
     id: 9,
+    title: "SkyCRM",
+    description: "A modern, high-performance CRM designed with a glassmorphism-inspired dark UI for visual clarity. It features a drag-and-drop Kanban pipeline, real-time analytics dashboards using Recharts, and a smart CSV import system with field mapping. The application leverages Supabase for real-time data persistence, authentication, and secure multi-tenant workspace management.",
+    image: crmImg,
+    githubUrl: "https://github.com/skyfalljoss/crm-vibecode",
+    liveUrl: "https://crm-vibecode.vercel.app/",
+    tech: ["React 19", "TypeScript", "Supabase", "Tailwind CSS", "Recharts", "Lucide React", "PapaParse"],
+    category: "Full Stack",
+    featured: true
+  },
+  {
+    id: 10,
+    title: "Campus Navigation Assistant",
+    description: "A comprehensive university navigation platform featuring an interactive Leaflet-based map, live shuttle tracking, and building/room search. It includes a custom-built heuristic routing engine that calculates walking distances and ETAs using the Haversine formula. The system supports user-specific features like saved locations and personalized schedules through Clerk authentication and a Prisma/PostgreSQL backend.",
+    image: campusNavigationImg, // Placeholder for a map/navigation image
+    githubUrl: "https://github.com/skyfalljoss/campus-navigation-assistant",
+    liveUrl: "https://campus-navigation-assistant.onrender.com/",
+    tech: ["React 19", "Express", "TypeScript", "Prisma", "PostgreSQL", "Clerk", "Leaflet", "Tailwind CSS v4"],
+    category: "Full Stack",
+    featured: true
+  },
+  {
+    id: 11,
     title: "AI Short Video Generator SaaS",
     description: "Engineered a fully automated video generation pipeline orchestrating Google GenAI for scriptwriting, Replicate for media synthesis, and Deepgram for high-fidelity text-to-speech, rendered programmatically via serverless Remotion Lambdas. Accelerated development with AI-assisted rapid prototyping to architect a scalable Next.js application, leveraging Inngest for reliable, asynchronous background orchestration. Integrated Clerk and Supabase for end-to-end SaaS functionality, establishing secure user authentication and real-time data persistence.",
     image: videoGeneratorImg,
@@ -104,20 +128,7 @@ const projectsData = [
     tech: ["Next.js", "TypeScript", "Remotion", "Google GenAI", "Supabase", "Inngest", "Clerk"],
     category: "Full Stack",
     featured: true
-  }
+  },
 ];
 
 export const projects = [...projectsData].sort((a, b) => b.id - a.id);
-
-export const getProjectById = (id) => {
-  return projects.find(project => project.id === id);
-};
-
-export const getFeaturedProjects = () => {
-  return projects.filter(project => project.featured);
-};
-
-export const getProjectsByCategory = (category) => {
-  if (category === 'all') return projects;
-  return projects.filter(project => project.category === category);
-};

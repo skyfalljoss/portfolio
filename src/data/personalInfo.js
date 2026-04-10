@@ -71,9 +71,3 @@ export const personalInfo = {
     lastUpdated: "August 2025"
   }
 };
-
-// Helper functions
-export const getFullName = () => personalInfo.name;
-export const getContactEmail = () => personalInfo.email;
-export const getYearsOfExperience = () => personalInfo.stats.yearsExperience;
-export const isAvailable = () => personalInfo.availability.status === "available";

@@ -1,116 +1,24 @@
-import React, { useEffect, useState, useRef } from 'react';
-
-// Use Vite's glob import to get all frames from light-bg
-const frameModules = import.meta.glob('../../assets/images/light-bg/*.jpg', { eager: true, query: '?url', import: 'default' });
-const frameUrls = Object.keys(frameModules)
-  .sort()
-  .map(key => frameModules[key]);
+import React from 'react';
 
 const LightBackground = ({ theme }) => {
-  const canvasRef = useRef(null);
-  const imagesRef = useRef([]);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-
-  // Preload frames
-  useEffect(() => {
-    if (theme !== 'light') return;
-
-    let loadedCount = 0;
-    const images = [];
-
-    frameUrls.forEach((url, i) => {
-      const img = new Image();
-      img.src = url;
-      img.onload = () => {
-        loadedCount++;
-        // Allow rendering even if a frame fails, but we ideally wait for all
-        if (loadedCount === frameUrls.length) {
-          imagesRef.current = images;
-          setImagesLoaded(true);
-        }
-      };
-      img.onerror = () => {
-        loadedCount++;
-        if (loadedCount === frameUrls.length) {
-          imagesRef.current = images;
-          setImagesLoaded(true);
-        }
-      };
-      images[i] = img;
-    });
-  }, [theme]);
-
-  // Handle scroll and render
-  useEffect(() => {
-    if (theme !== 'light' || !imagesLoaded || !canvasRef.current) return;
-
-    const canvas = canvasRef.current;
-    // WillReadFrequently is often recommended for these types of scrubbing canvases to reduce memory overhead
-    const context = canvas.getContext('2d', { willReadFrequently: true });
-
-    const render = (index) => {
-      const img = imagesRef.current[index];
-      if (!img || !img.width) return;
-
-      // Ensure canvas internal resolution matches device pixel ratio for sharpness
-      const dpr = window.devicePixelRatio || 1;
-      const displayWidth = window.innerWidth;
-      const displayHeight = window.innerHeight;
-
-      if (canvas.width !== displayWidth * dpr || canvas.height !== displayHeight * dpr) {
-        canvas.width = displayWidth * dpr;
-        canvas.height = displayHeight * dpr;
-      }
-
-      // Calculate object-cover scale
-      const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
-      const x = (canvas.width / 2) - (img.width / 2) * scale;
-      const y = (canvas.height / 2) - (img.height / 2) * scale;
-
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      context.drawImage(img, x, y, img.width * scale, img.height * scale);
-    };
-
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollFraction = docHeight > 0 ? scrollTop / docHeight : 0;
-      
-      const frameIndex = Math.min(
-        Math.max(Math.floor(scrollFraction * frameUrls.length), 0),
-        frameUrls.length - 1
-      );
-      
-      requestAnimationFrame(() => render(frameIndex));
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', handleScroll);
-    
-    // Initial render
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
-    };
-  }, [theme, imagesLoaded]);
-
   if (theme !== 'light') return null;
 
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      {!imagesLoaded ? (
-        <div className="absolute inset-0 w-full h-full bg-gray-50 transition-colors duration-500" />
-      ) : (
-        <canvas 
-          ref={canvasRef}
-          className="absolute inset-0 w-full h-full animate-fade-in opacity-80"
-          style={{ objectFit: 'cover' }}
-        />
-      )}
-      {/* Light overlay to ensure text legibility */}
-      <div className="absolute inset-0 bg-white/30"></div>
+    <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none bg-gray-50 transition-colors duration-500">
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-100 via-white to-slate-200" />
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        className="absolute inset-0 h-full w-full object-cover animate-fade-in opacity-78"
+      >
+        <source src="https://ik.imagekit.io/0fkflxaif/bgVideo/Animate_this_seamless_202604011257.mp4?updatedAt=1775062843885" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-white/45" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(255,255,255,0.18)_65%,rgba(255,255,255,0.38)_100%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/35 to-white/70" />
     </div>
   );
 };

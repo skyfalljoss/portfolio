@@ -23,7 +23,7 @@ const ArrowLeftIcon = ({ size = 16, className = "" }) => (
 
 const ProjectsPage = ({ setCurrentPage }) => {
   return (
-    <div className="pt-20 min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="pt-20 min-h-screen bg-transparent transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6 py-16">
         <SectionTitle
           title="All Projects"

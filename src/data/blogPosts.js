@@ -199,25 +199,3 @@ The future of development is here, running directly in your terminal. Gemini CLI
 
   },
 ];
-
-export const getBlogPostById = (id) => {
-  return blogPosts.find(post => post.id === id);
-};
-
-export const getBlogPostsByCategory = (category) => {
-  if (category === 'all') return blogPosts;
-  return blogPosts.filter(post => post.category === category);
-};
-
-export const getRecentBlogPosts = (limit = 3) => {
-  return blogPosts.slice(0, limit);
-};
-
-export const searchBlogPosts = (query) => {
-  const lowerQuery = query.toLowerCase();
-  return blogPosts.filter(post => 
-    post.title.toLowerCase().includes(lowerQuery) ||
-    post.excerpt.toLowerCase().includes(lowerQuery) ||
-    post.tags.some(tag => tag.toLowerCase().includes(lowerQuery))
-  );
-};

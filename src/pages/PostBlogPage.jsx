@@ -2,142 +2,17 @@ import React from 'react';
 import BlogCard from '../components/common/BlogCard';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
+import {
+  ArrowLeftIcon,
+  CalendarIcon,
+  ClockIcon,
+  Share2Icon,
+  TwitterIcon,
+  FacebookIcon,
+  LinkedinIcon,
+} from '../components/icons/icons';
 import { blogPosts } from '../data/blogPosts';
 import ContactSection from '../components/features/ContactSection';
-
-// Custom SVG Icons as React components
-const ArrowLeftIcon = ({ size = 16, className = "" }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-    className={className}
-  >
-    <line x1="19" y1="12" x2="5" y2="12"/>
-    <polyline points="12,19 5,12 12,5"/>
-  </svg>
-);
-
-const CalendarIcon = ({ size = 14, className = "" }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-    className={className}
-  >
-    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-    <line x1="16" y1="2" x2="16" y2="6"/>
-    <line x1="8" y1="2" x2="8" y2="6"/>
-    <line x1="3" y1="10" x2="21" y2="10"/>
-  </svg>
-);
-
-const ClockIcon = ({ size = 14, className = "" }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-    className={className}
-  >
-    <circle cx="12" cy="12" r="10"/>
-    <polyline points="12,6 12,12 16,14"/>
-  </svg>
-);
-
-const Share2Icon = ({ size = 16, className = "" }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-    className={className}
-  >
-    <circle cx="18" cy="5" r="3"/>
-    <circle cx="6" cy="12" r="3"/>
-    <circle cx="18" cy="19" r="3"/>
-    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-  </svg>
-);
-
-// const BookmarkIcon = ({ size = 16, className = "" }) => (
-//   <svg 
-//     width={size} 
-//     height={size} 
-//     viewBox="0 0 24 24" 
-//     fill="none" 
-//     stroke="currentColor" 
-//     strokeWidth="2" 
-//     strokeLinecap="round" 
-//     strokeLinejoin="round"
-//     className={className}
-//   >
-//     <path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
-//   </svg>
-// );
-
-const TwitterIcon = ({ size = 14, className = "" }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="currentColor" 
-    stroke="none"
-    className={className}
-  >
-    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-  </svg>
-);
-
-const FacebookIcon = ({ size = 14, className = "" }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="currentColor" 
-    stroke="none"
-    className={className}
-  >
-    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-  </svg>
-);
-
-const LinkedinIcon = ({ size = 14, className = "" }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-    <rect x="2" y="9" width="4" height="12"/>
-    <circle cx="4" cy="4" r="2"/>
-  </svg>
-);
 
 const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
   if (!selectedPost) {
@@ -156,7 +31,6 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
     );
   }
 
-  // Get other posts excluding the current one
   const otherPosts = blogPosts.filter(post => post.id !== selectedPost.id).slice(0, 3);
 
   const handleShare = (platform) => {
@@ -180,11 +54,6 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
     
     window.open(shareUrl, '_blank', 'width=600,height=400');
   };
-
-  // const handleBookmark = () => {
-  //   // Add bookmark functionality
-  //   console.log('Bookmark added');
-  // };
 
   return (
     <div className="pt-20 bg-transparent min-h-screen transition-colors duration-300">
@@ -223,17 +92,6 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
 
           {/* Action Buttons */}
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              {/* <Button
-                variant="outline"
-                size="sm"
-                onClick={handleBookmark}
-              >
-                <BookmarkIcon size={16} />
-                <span>Bookmark</span>
-              </Button> */}
-            </div>
-
             <div className="flex items-center space-x-2">
               <span className="text-sm text-gray-600 mr-2">Share:</span>
               <button
@@ -314,21 +172,6 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
                       Introduction
                     </a>
                   </li>
-                  {/* <li>
-                    <a href="#getting-started" className="text-gray-600 hover:text-primary transition-colors">
-                      Getting Started
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#best-practices" className="text-gray-600 hover:text-primary transition-colors">
-                      Best Practices
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#conclusion" className="text-gray-600 hover:text-primary transition-colors">
-                      Conclusion
-                    </a>
-                  </li> */}
                 </ul>
               </Card>
 
@@ -344,29 +187,8 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 transition-colors duration-300">
                     A software engineer based in Tampa Florida.
                   </p>
-                  {/* <Button variant="outline" size="sm" className="w-full">
-                    Follow
-                  </Button> */}
                 </div>
               </Card>
-
-              {/* Newsletter */}
-              {/* <Card padding="md" className="bg-primary/5">
-                <h3 className="font-semibold text-gray-900 mb-2">Stay Updated</h3>
-                <p className="text-sm text-gray-600 mb-4">
-                  Get the latest articles delivered to your inbox.
-                </p>
-                <div className="space-y-3">
-                  <input
-                    type="email"
-                    placeholder="Your email"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                  />
-                  <Button variant="primary" size="sm" className="w-full">
-                    Subscribe
-                  </Button>
-                </div>
-              </Card> */}
             </div>
           </aside>
         </div>

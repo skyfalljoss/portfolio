@@ -42,32 +42,17 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setStatusMessage('');
-    
-    // Simulate form submission
-    // await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
     const serviceID = 'service_dhy5p7g';
     const templateID = 'template_gryphzl';
     const publicKey = 'JkXH6SuNYtrQxc82l';
-
-    // Reset form
-    // setFormData({
-    //   name: '',
-    //   email: '',
-    //   subject: '',
-    //   message: ''
-    // });
-    // setIsSubmitting(false);
     
     emailjs.send(serviceID, templateID, formData, publicKey)
-      .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
-
+      .then(() => {
         setStatusMessage({ type: 'success', text: 'Message sent successfully!' });
         
         setFormData({ name: '', email: '', subject: '', message: '' });
-      }, (err) => {
-        console.log('FAILED...', err);
+      }, () => {
         setStatusMessage({ type: 'error', text: 'Failed to send message. Please try again later.' });
       })
       .finally(() => {

@@ -16,8 +16,14 @@ const ProjectCard = ({ project }) => {
     }
   };
 
+  const handleCardClick = () => {
+    if (project.liveUrl) {
+      window.open(project.liveUrl, "_blank", "noopener,noreferrer");
+    }
+  };
+
   return (
-    <Card hover={true} padding="none" className="group">
+    <Card hover={true} padding="none" className="group" onClick={project.liveUrl ? handleCardClick : undefined}>
       {/* Project Image */}
       <div className="relative overflow-hidden">
         <img

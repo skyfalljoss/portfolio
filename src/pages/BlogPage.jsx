@@ -2,61 +2,9 @@ import React, { useState } from "react";
 import SectionTitle from "../components/common/SectionTitle";
 import BlogCard from "../components/common/BlogCard";
 import Button from "../components/ui/Button";
+import { SearchIcon } from "../components/icons/icons";
 import { blogPosts } from "../data/blogPosts";
 import ContactSection from "../components/features/ContactSection";
-
-// Custom SVG Icons as React components
-const SearchIcon = ({ size = 20, className = "" }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <circle cx="11" cy="11" r="8" />
-    <path d="m21 21-4.35-4.35" />
-  </svg>
-);
-
-// const FilterIcon = ({ size = 20, className = "" }) => (
-//   <svg
-//     width={size}
-//     height={size}
-//     viewBox="0 0 24 24"
-//     fill="none"
-//     stroke="currentColor"
-//     strokeWidth="2"
-//     strokeLinecap="round"
-//     strokeLinejoin="round"
-//     className={className}
-//   >
-//     <polygon points="22,3 2,3 10,12.46 10,19 14,21 14,12.46" />
-//   </svg>
-// );
-//
-// const CalendarIcon = ({ size = 20, className = "" }) => (
-//   <svg
-//     width={size}
-//     height={size}
-//     viewBox="0 0 24 24"
-//     fill="none"
-//     stroke="currentColor"
-//     strokeWidth="2"
-//     strokeLinecap="round"
-//     strokeLinejoin="round"
-//     className={className}
-//   >
-//     <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-//     <line x1="16" y1="2" x2="16" y2="6" />
-//     <line x1="8" y1="2" x2="8" y2="6" />
-//     <line x1="3" y1="10" x2="21" y2="10" />
-//   </svg>
-// );
 
 const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -102,6 +50,15 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
     setSortBy("newest");
   };
 
+  const hasActiveFilters =
+    searchTerm || selectedCategory !== "all" || sortBy !== "newest";
+
+  const activeFilters = [
+    searchTerm ? `Search: ${searchTerm}` : null,
+    selectedCategory !== "all" ? `Category: ${selectedCategory}` : null,
+    sortBy !== "newest" ? `Sort: ${sortBy}` : null,
+  ].filter(Boolean);
+
   return (
     <div className="pt-20 min-h-screen bg-transparent transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6 py-16">
@@ -112,44 +69,54 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
         />
 
         {/* Search and Filter Section */}
-        <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-md rounded-xl shadow-lg border border-gray-100 dark:border-white/10 p-6 mb-12 transition-colors duration-300">
-          <div className="grid md:grid-cols-4 gap-4 ">
+        <div className="relative overflow-hidden rounded-2xl border border-gray-100 bg-white/75 p-5 shadow-lg backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-slate-900/55 dark:shadow-2xl dark:shadow-slate-950/30 mb-12">
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+          <div className="absolute -right-16 top-1/2 h-32 w-32 -translate-y-1/2 rounded-full bg-primary/10 blur-3xl dark:bg-primary/20" />
+
+          <div className="relative grid gap-4 lg:grid-cols-[minmax(0,1.25fr)_auto] lg:items-center">
             {/* Search Input */}
-            <div className="relative md:col-span-2">
+            <div className="relative">
               <SearchIcon
                 size={18}
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
               />
               <input
                 type="text"
                 placeholder="Search articles..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-700 bg-transparent dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-300"
+                className="w-full rounded-xl border border-gray-200/80 bg-white/80 py-3.5 pr-4 pl-11 text-gray-900 shadow-sm shadow-slate-200/50 transition-colors duration-300 placeholder:text-gray-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 dark:border-white/10 dark:bg-white/[0.04] dark:text-white dark:shadow-none dark:placeholder:text-gray-500"
               />
             </div>
 
             {/* Filter Summary */}
-            {(searchTerm ||
-              selectedCategory !== "all" ||
-              sortBy !== "newest") && (
-              <div className="flex items-center justify-between relative md:col-span-2">
-                <div className="flex items-center text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">
-                  <span className="mx-4">
-                    Showing {filteredPosts.length} of {blogPosts.length}{" "}
-                    articles
+            <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-end">
+              <div className="flex flex-wrap items-center gap-2 lg:justify-end">
+                <span className="inline-flex items-center rounded-full border border-gray-200 bg-white/80 px-3 py-1 text-sm font-medium text-gray-700 shadow-sm transition-colors duration-300 dark:border-white/10 dark:bg-white/[0.05] dark:text-gray-200">
+                  Showing {filteredPosts.length} of {blogPosts.length} articles
+                </span>
+
+                {activeFilters.map((filter) => (
+                  <span
+                    key={filter}
+                    className="inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm text-primary transition-colors duration-300 dark:border-primary/30 dark:bg-primary/10 dark:text-primary-light"
+                  >
+                    {filter}
                   </span>
-                  {searchTerm && <span>•Searching for "{searchTerm}"</span>}
-                  {selectedCategory !== "all" && (
-                    <span className="mx-4">• Category: {selectedCategory}</span>
-                  )}
-                  <Button className="mx-4" variant="secondary" size="sm" onClick={handleClearFilters}>
+                ))}
+              </div>
+
+              {hasActiveFilters && (
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  onClick={handleClearFilters}
+                  className="self-start rounded-xl border-primary/70 bg-primary/5 px-5 dark:bg-transparent lg:self-auto lg:shrink-0"
+                >
                   Clear Filters
                 </Button>
-                </div>
-                
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
 
@@ -163,11 +130,7 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
             ))}
           </div>
         ) : (
-          /* No Results */
           <div className="text-center py-16">
-            {/* <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <SearchIcon size={32} className="text-gray-400" />
-            </div> */}
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 transition-colors duration-300">
               No articles found
             </h3>
@@ -214,33 +177,6 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
           </div>
         </div>
 
-        {/* Newsletter Signup */}
-        {/* <div className="mt-16 bg-white rounded-2xl p-8 md:p-12 shadow-lg">
-          <div className="text-center max-w-2xl mx-auto">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-              Never Miss an Article
-            </h3>
-            <p className="text-gray-600 mb-6">
-              Subscribe to get the latest articles about web development and technology 
-              delivered straight to your inbox.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-              />
-              <Button variant="primary">
-                Subscribe
-              </Button>
-            </div>
-            
-            <p className="text-xs text-gray-500 mt-3">
-              No spam, unsubscribe at any time.
-            </p>
-          </div>
-        </div> */}
         {/* Contact Section */}
         <div className="mt-16 bg-white/80 dark:bg-slate-900/60 backdrop-blur-md rounded-2xl border border-gray-100 dark:border-white/10 p-8 md:p-12 shadow-lg transition-colors duration-300">
           <ContactSection />

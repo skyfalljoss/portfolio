@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import Navigation from './components/layout/Navigation';
-import HomePage from './pages/HomePage';
+import HomePage from './pages/HomePage.jsx';
 import AboutPage from './pages/AboutPage';
 import BlogPage from './pages/BlogPage';
 import PostBlogPage from './pages/PostBlogPage';

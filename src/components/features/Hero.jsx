@@ -7,36 +7,25 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Hero = ({ setCurrentPage }) => {
   const handleResumeDownload = () => {
-    // Add resume download logic here
-    // Create a temporary link element
     const link = document.createElement('a');
-    // Set the path to your resume PDF file
-    link.href = personalInfo.resume.url; // Update this path to your actual resume file
-    link.download = `${personalInfo.name.replace(/\s+/g, '_')}_Resume.pdf`; // Optional: custom filename
-    // Append to the document
+    link.href = personalInfo.resume.url;
+    link.download = `${personalInfo.name.replace(/\s+/g, '_')}_Resume.pdf`;
     document.body.appendChild(link);
-    // Trigger the download
     link.click();
-    // Remove the link from the document
     document.body.removeChild(link);
-    console.log('Downloading resume...');
   };
 
   const containerRef = useRef(null);
   
-  // Track scroll progress within the Hero section
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
   });
 
-  // Map scroll progress to horizontal and vertical movement
-  // Using multiple array points creates a non-linear, curved path (an arch moving out and up)
   const imageX = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 30, 120, 350]);
   const imageY = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, -120, -220, -300]);
   const imageOpacity = useTransform(scrollYProgress, [0, 0.5, 0.9], [1, 0.8, 0]);
 
-  // Reverse animation for the text side (curves up and left)
   const textX = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, -30, -120, -350]);
   const textY = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, -120, -220, -300]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.5, 0.9], [1, 0.8, 0]);
@@ -87,22 +76,6 @@ const Hero = ({ setCurrentPage }) => {
               <span>Download Resume</span>
             </Button>
           </div>
-
-          {/* Quick Stats */}
-          {/* <div className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-gray-900">5+</div>
-              <div className="text-sm text-gray-600">Years Experience</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-gray-900">50+</div>
-              <div className="text-sm text-gray-600">Projects Completed</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-gray-900">30+</div>
-              <div className="text-sm text-gray-600">Happy Clients</div>
-            </div>
-          </div> */}
         </motion.div>
 
         {/* Image Side */}
@@ -121,13 +94,6 @@ const Hero = ({ setCurrentPage }) => {
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-gray-300 rounded-full mt-2 animate-pulse"></div>
-        </div>
-      </div> */}
     </section>
   );
 };

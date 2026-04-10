@@ -8,12 +8,9 @@ import { motion } from 'framer-motion';
 
 
 const LatestWork = ({ setCurrentPage }) => {
-  // Show only the first 3 projects
   const featuredProjects = projects.slice(0, 3);
 
   const handleViewAllProjects = () => {
-    // Navigate to a projects page or portfolio section
-    console.log('Navigate to all projects');
     setCurrentPage('projects');
   };
 
