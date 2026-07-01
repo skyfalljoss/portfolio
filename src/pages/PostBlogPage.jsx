@@ -58,7 +58,7 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
   return (
     <div className="pt-20 bg-transparent min-h-screen transition-colors duration-300">
       {/* Article Header */}
-      <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-md border-b border-gray-200 dark:border-white/10 transition-colors duration-300">
+      <div className="bg-slate-50/80 dark:bg-slate-900/60 backdrop-blur-md border-b border-gray-200 dark:border-white/10 transition-colors duration-300">
         <div className="max-w-4xl mx-auto px-6 py-8">
           <button
             onClick={() => setCurrentPage('blog')}
@@ -228,7 +228,7 @@ const PostBlogPage = ({ selectedPost, setSelectedPost, setCurrentPage }) => {
             </div>
           </Card>
         </div>
-        <div className="mt-16 bg-white/80 dark:bg-slate-900/60 backdrop-blur-md border border-gray-100 dark:border-white/10 rounded-2xl p-8 md:p-12 shadow-lg transition-colors duration-300">
+        <div className="mt-16 bg-slate-50/80 dark:bg-slate-900/60 backdrop-blur-md border border-gray-100 dark:border-white/10 rounded-2xl p-8 md:p-12 shadow-lg transition-colors duration-300">
             <ContactSection />
         </div>
       </div>

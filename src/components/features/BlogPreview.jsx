@@ -21,15 +21,15 @@ const BlogPreview = ({ setCurrentPage, setSelectedPost }) => {
   };
 
   return (
-    <section className="py-20 bg-transparent transition-colors duration-300">
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+    <section className="py-16 bg-transparent transition-colors duration-300 sm:py-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         <SectionTitle
           title="From The Blog"
           subtitle="Thoughts, tutorials, and insights about web development, technology, and design"
         />
 
         {/* Blog Posts Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="mb-10 grid gap-6 sm:mb-12 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
           {featuredPosts.map((post, index) => (
             <motion.div 
               key={post.id} 
@@ -52,6 +52,7 @@ const BlogPreview = ({ setCurrentPage, setSelectedPost }) => {
             variant="secondary"
             size="lg"
             onClick={handleViewAllPosts}
+            className="w-full sm:w-auto"
           >
             <span>View All Posts</span>
             <ArrowRightIcon size={16} />
@@ -64,23 +65,23 @@ const BlogPreview = ({ setCurrentPage, setSelectedPost }) => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="mt-16 bg-white/80 dark:bg-slate-900/60 rounded-2xl p-8 md:p-12 shadow-lg backdrop-blur-md border border-gray-100 dark:border-white/10 transition-colors duration-300"
+          className="mt-14 rounded-2xl border border-gray-100 bg-slate-50/80 p-6 shadow-lg backdrop-blur-md transition-colors duration-300 dark:border-white/10 dark:bg-slate-900/60 sm:mt-16 sm:p-8 md:p-12"
         >
           <div className="text-center max-w-2xl mx-auto">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
+            <h3 className="mb-4 text-xl font-bold text-gray-900 transition-colors duration-300 dark:text-white sm:text-2xl md:text-3xl">
               Stay Updated
             </h3>
             <p className="text-gray-600 dark:text-gray-200 mb-6 transition-colors duration-300">
             Get the latest articles on web development, design, and tech insights delivered straight to your inbox.
           </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <div className="mx-auto flex max-w-md flex-col gap-4 sm:flex-row">
               <input
                 type="email"
                 placeholder="Enter your email"
                 className="flex-1 px-4 py-3 border border-gray-300 dark:border-white/20 dark:focus:border-primary dark:bg-white/5 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
               />
-              <Button variant="primary">
+              <Button variant="primary" className="w-full sm:w-auto">
                 Subscribe
               </Button>
             </div>

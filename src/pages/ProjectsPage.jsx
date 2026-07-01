@@ -24,13 +24,13 @@ const ArrowLeftIcon = ({ size = 16, className = "" }) => (
 const ProjectsPage = ({ setCurrentPage }) => {
   return (
     <div className="pt-20 min-h-screen bg-transparent transition-colors duration-300">
-      <div className="max-w-6xl mx-auto px-6 py-16">
+      <div className="max-w-6xl mx-auto px-4 py-12 sm:px-6 sm:py-16">
         <SectionTitle
           title="All Projects"
           subtitle="A collection of my work, showcasing my skills in web development and design."
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="mb-10 grid gap-6 sm:mb-12 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
             <div key={project.id} className="animate-fade-in-up">
               <ProjectCard project={project} />
@@ -43,6 +43,7 @@ const ProjectsPage = ({ setCurrentPage }) => {
             variant="secondary"
             size="lg"
             onClick={() => setCurrentPage('home')}
+            className="w-full sm:w-auto"
           >
             <ArrowLeftIcon size={16} />
             <span>Back to Home</span>

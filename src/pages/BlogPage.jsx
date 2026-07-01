@@ -61,7 +61,7 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
 
   return (
     <div className="pt-20 min-h-screen bg-transparent transition-colors duration-300">
-      <div className="max-w-6xl mx-auto px-6 py-16">
+      <div className="max-w-6xl mx-auto px-4 py-12 sm:px-6 sm:py-16">
         {/* Page Header */}
         <SectionTitle
           title="Blog"
@@ -69,7 +69,7 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
         />
 
         {/* Search and Filter Section */}
-        <div className="relative overflow-hidden rounded-2xl border border-gray-100 bg-white/75 p-5 shadow-lg backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-slate-900/55 dark:shadow-2xl dark:shadow-slate-950/30 mb-12">
+        <div className="relative mb-10 overflow-hidden rounded-2xl border border-gray-100 bg-slate-50/75 p-4 shadow-lg backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-slate-900/55 dark:shadow-2xl dark:shadow-slate-950/30 sm:mb-12 sm:p-5">
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
           <div className="absolute -right-16 top-1/2 h-32 w-32 -translate-y-1/2 rounded-full bg-primary/10 blur-3xl dark:bg-primary/20" />
 
@@ -85,14 +85,14 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
                 placeholder="Search articles..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full rounded-xl border border-gray-200/80 bg-white/80 py-3.5 pr-4 pl-11 text-gray-900 shadow-sm shadow-slate-200/50 transition-colors duration-300 placeholder:text-gray-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 dark:border-white/10 dark:bg-white/[0.04] dark:text-white dark:shadow-none dark:placeholder:text-gray-500"
+                className="w-full rounded-xl border border-gray-200/80 bg-slate-50/80 py-3.5 pr-4 pl-11 text-gray-900 shadow-sm shadow-slate-200/50 transition-colors duration-300 placeholder:text-gray-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 dark:border-white/10 dark:bg-white/[0.04] dark:text-white dark:shadow-none dark:placeholder:text-gray-500"
               />
             </div>
 
             {/* Filter Summary */}
             <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-end">
               <div className="flex flex-wrap items-center gap-2 lg:justify-end">
-                <span className="inline-flex items-center rounded-full border border-gray-200 bg-white/80 px-3 py-1 text-sm font-medium text-gray-700 shadow-sm transition-colors duration-300 dark:border-white/10 dark:bg-white/[0.05] dark:text-gray-200">
+                <span className="inline-flex items-center rounded-full border border-gray-200 bg-slate-50/80 px-3 py-1 text-sm font-medium text-gray-700 shadow-sm transition-colors duration-300 dark:border-white/10 dark:bg-white/[0.05] dark:text-gray-200">
                   Showing {filteredPosts.length} of {blogPosts.length} articles
                 </span>
 
@@ -111,7 +111,7 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
                   variant="secondary"
                   size="sm"
                   onClick={handleClearFilters}
-                  className="self-start rounded-xl border-primary/70 bg-primary/5 px-5 dark:bg-transparent lg:self-auto lg:shrink-0"
+                  className="w-full self-start rounded-xl border-primary/70 bg-primary/5 px-5 dark:bg-transparent sm:w-auto lg:self-auto lg:shrink-0"
                 >
                   Clear Filters
                 </Button>
@@ -122,7 +122,7 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
 
         {/* Blog Posts Grid */}
         {filteredPosts.length > 0 ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
             {filteredPosts.map((post) => (
               <div key={post.id} className="animate-fade-in-up">
                 <BlogCard post={post} onClick={() => handleBlogClick(post)} />
@@ -145,7 +145,7 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
         )}
 
         {/* Featured Categories */}
-        <div className="mt-16 pt-16 border-t border-gray-200 dark:border-gray-700 transition-colors duration-300">
+        <div className="mt-14 border-t border-gray-200 pt-14 transition-colors duration-300 dark:border-gray-700 sm:mt-16 sm:pt-16">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">
               Browse by Category
@@ -153,7 +153,7 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
             <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">Explore articles by topic</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
             {categories.slice(1).map((category) => {
               const categoryPosts = blogPosts.filter(
                 (post) => (post.category || "Development") === category
@@ -162,7 +162,7 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
                 <div
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-md rounded-lg p-6 text-center border border-gray-100 dark:border-white/10 cursor-pointer hover:shadow-lg transition-all duration-300"
+                  className="bg-slate-50/80 dark:bg-slate-900/60 backdrop-blur-md rounded-lg p-6 text-center border border-gray-100 dark:border-white/10 cursor-pointer hover:shadow-lg transition-all duration-300"
                 >
                   <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                     {category}
@@ -178,7 +178,7 @@ const BlogPage = ({ setSelectedPost, setCurrentPage }) => {
         </div>
 
         {/* Contact Section */}
-        <div className="mt-16 bg-white/80 dark:bg-slate-900/60 backdrop-blur-md rounded-2xl border border-gray-100 dark:border-white/10 p-8 md:p-12 shadow-lg transition-colors duration-300">
+        <div className="mt-16 rounded-2xl border border-gray-100 bg-slate-50/80 p-5 shadow-lg backdrop-blur-md transition-colors duration-300 dark:border-white/10 dark:bg-slate-900/60 sm:p-8 md:p-12">
           <ContactSection />
         </div>
       </div>

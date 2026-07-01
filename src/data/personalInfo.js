@@ -6,7 +6,7 @@ export const personalInfo = {
   name: "Phong Nguyen",
   firstName: "Phong",
   title: "A software engineer enthusiast based in Tampa Florida.",
-  email: "pnguyen27@usf.edu",
+  email: "phongng.swe@gmail.com",
   phone: "+1 (727) 123-4567",
   location: "St.Petersburg, FL",
   
@@ -32,7 +32,7 @@ export const personalInfo = {
     linkedin: "https://www.linkedin.com/in/phong-nguyen-3467a5207/",
     twitter: "https://twitter.com/",
     instagram: "https://instagram.com/",
-    email: "https://mail.google.com/mail/u/0/?to=pnguyen27@usf.edu"
+    email: "https://mail.google.com/mail/u/0/?to=phongng.swe@gmail.com"
     
   },
   
@@ -43,11 +43,115 @@ export const personalInfo = {
   
   // Skills
   skills: {
-    Languages: ["Python", "C/C++", "C#", "SQL", "HTML", "CSS", "JavaScript"],
-    Frameworks: ["Reactjs", "Django", "Flask", "Tailwindcss", "Bootstrap"],
-    database: ["MYSQL", "SQLite", "PostgreSQL", "MongoDB"],
-    tools: ["Git", "Docker",  "Figma", "VS Code", "Postman"],
-    other: ["Responsive Design", "Testing", "Agile", "UI/UX Design"]
+    rings: [
+      {
+        id: "languages",
+        label: "Languages",
+        color: "#FF9F0A",
+        skills: [
+          { name: "Python", proficiency: 90 },
+          { name: "C/C++", proficiency: 80 },
+          { name: "JavaScript", proficiency: 85 },
+          { name: "TypeScript", proficiency: 80 },
+          { name: "SQL", proficiency: 85 },
+          { name: "HTML/CSS", proficiency: 90 },
+        ],
+      },
+      {
+        id: "frameworks",
+        label: "Frameworks & Libraries",
+        color: "#00D2FF",
+        skills: [
+          { name: "React", proficiency: 80 },
+          { name: "Next.js", proficiency: 75 },
+          { name: "Node.js", proficiency: 80 },
+          { name: "Django", proficiency: 85 },
+          { name: "Flask", proficiency: 80 },
+          { name: "TailwindCSS", proficiency: 85 },
+          { name: "SpaCy", proficiency: 70 },
+          { name: "Keras/TensorFlow", proficiency: 70 },
+        ],
+      },
+      {
+        id: "databases",
+        label: "Databases",
+        color: "#00FF87",
+        skills: [
+          { name: "PostgreSQL", proficiency: 80 },
+          { name: "MySQL", proficiency: 80 },
+          { name: "SQLite", proficiency: 75 },
+          { name: "Prisma", proficiency: 70 },
+          { name: "SQLAlchemy", proficiency: 75 },
+        ],
+      },
+      {
+        id: "devops",
+        label: "DevOps & Tools",
+        color: "#BF5AF2",
+        skills: [
+          { name: "Git", proficiency: 85 },
+          { name: "GitHub", proficiency: 85 },
+          { name: "Docker", proficiency: 70 },
+          { name: "Vercel", proficiency: 75 },
+          { name: "Clerk", proficiency: 70 },
+          { name: "Postman", proficiency: 80 },
+          { name: "Jira", proficiency: 75 },
+          { name: "Inngest", proficiency: 65 },
+          { name: "OpenAI API", proficiency: 75 },
+        ],
+      },
+    ],
+    connections: [
+      // Python ecosystem
+      { from: "Python", to: "Django" },
+      { from: "Python", to: "Flask" },
+      { from: "Python", to: "SpaCy" },
+      { from: "Python", to: "Keras/TensorFlow" },
+      { from: "Python", to: "SQLAlchemy" },
+      // JavaScript/TypeScript ecosystem
+      { from: "JavaScript", to: "React" },
+      { from: "JavaScript", to: "Next.js" },
+      { from: "JavaScript", to: "Node.js" },
+      { from: "JavaScript", to: "TailwindCSS" },
+      { from: "TypeScript", to: "React" },
+      { from: "TypeScript", to: "Next.js" },
+      { from: "TypeScript", to: "Node.js" },
+      { from: "TypeScript", to: "Prisma" },
+      // HTML/CSS connections
+      { from: "HTML/CSS", to: "TailwindCSS" },
+      { from: "HTML/CSS", to: "React" },
+      // SQL connections
+      { from: "SQL", to: "PostgreSQL" },
+      { from: "SQL", to: "MySQL" },
+      { from: "SQL", to: "SQLite" },
+      // Framework-to-database connections
+      { from: "Django", to: "PostgreSQL" },
+      { from: "Django", to: "SQLite" },
+      { from: "Django", to: "Docker" },
+      { from: "Flask", to: "SQLAlchemy" },
+      { from: "Flask", to: "SQLite" },
+      { from: "Flask", to: "Docker" },
+      { from: "Next.js", to: "Vercel" },
+      { from: "Next.js", to: "Prisma" },
+      { from: "Next.js", to: "Node.js" },
+      { from: "Node.js", to: "Prisma" },
+      { from: "Node.js", to: "Inngest" },
+      // Database ORM connections
+      { from: "PostgreSQL", to: "Prisma" },
+      { from: "PostgreSQL", to: "SQLAlchemy" },
+      { from: "PostgreSQL", to: "Docker" },
+      // DevOps connections
+      { from: "React", to: "Next.js" },
+      { from: "React", to: "TailwindCSS" },
+      { from: "React", to: "Vercel" },
+      { from: "Git", to: "GitHub" },
+      { from: "Git", to: "Jira" },
+      { from: "Docker", to: "Vercel" },
+      { from: "Clerk", to: "Next.js" },
+      // AI connections
+      { from: "OpenAI API", to: "Python" },
+      { from: "OpenAI API", to: "Node.js" },
+    ],
   },
   
   // Statistics

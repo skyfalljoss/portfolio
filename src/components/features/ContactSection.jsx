@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import SectionTitle from '../common/SectionTitle';
 import Button from '../ui/Button';
-import Card from '../ui/Card';
 import emailjs from '@emailjs/browser';
 import {MailIcon, LinkedinIcon, GithubIcon, MapPinIcon, PhoneIcon, SendIcon } from '../icons/icons'
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 
 
 const ContactSection = () => {
   const containerRef = useRef(null);
+  const prefersReducedMotion = useReducedMotion();
+  const [isCompactLayout, setIsCompactLayout] = useState(false);
   
   // Track scroll progress through the contact section
   const { scrollYProgress } = useScroll({
@@ -17,9 +17,26 @@ const ContactSection = () => {
     offset: ["start end", "end start"]
   });
 
-  // Create parallax values - the form moves up faster, info moves slightly slower
-  const formY = useTransform(scrollYProgress, [0, 1], [150, -150]);
-  const infoY = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 1023px)');
+    const handleChange = (event) => {
+      setIsCompactLayout(event.matches);
+    };
+
+    setIsCompactLayout(mediaQuery.matches);
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    }
+
+    mediaQuery.addListener(handleChange);
+    return () => mediaQuery.removeListener(handleChange);
+  }, []);
+
+  const disableParallax = prefersReducedMotion || isCompactLayout;
+  const formY = useTransform(scrollYProgress, [0, 1], disableParallax ? [0, 0] : [150, -150]);
+  const infoY = useTransform(scrollYProgress, [0, 1], disableParallax ? [0, 0] : [50, -50]);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -28,7 +45,7 @@ const ContactSection = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [statusMessage, setStatusMessage] = useState('');
+  const [statusMessage, setStatusMessage] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -41,7 +58,7 @@ const ContactSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setStatusMessage('');
+    setStatusMessage(null);
 
     const serviceID = 'service_dhy5p7g';
     const templateID = 'template_gryphzl';
@@ -64,8 +81,8 @@ const ContactSection = () => {
     {
       icon: MailIcon,
       title: 'Email',
-      value: 'pnguyen27@usf.edu',
-      href: 'https://mail.google.com/mail/u/0/?to=pnguyen27@usf.edu#inbox?compose=CllgCJvqKRRfdbbgHKFhqpqFDxQZwznkhjzgjnhJNdqSxrKDVpsJgzxtfpzjwVwkfztvqxKZPFL'
+      value: 'phongng.swe@gmail.com',
+      href: 'https://mail.google.com/mail/u/0/?to=phongng.swe@gmail.com#inbox?compose=CllgCJvqKRRfdbbgHKFhqpqFDxQZwznkhjzgjnhJNdqSxrKDVpsJgzxtfpzjwVwkfztvqxKZPFL'
     },
     {
       icon: PhoneIcon,
@@ -85,41 +102,41 @@ const ContactSection = () => {
     {
       icon: GithubIcon,
       title: 'GitHub',
-      href: 'https://github.com',
+      href: 'https://github.com/skyfalljoss/',
       color: 'hover:text-gray-900'
     },
     {
       icon: LinkedinIcon,
       title: 'LinkedIn',
-      href: 'https://linkedin.com',
+      href: 'https://linkedin.com/in/phong-nguyen-3467a5207/',
       color: 'hover:text-blue-600'
     },
     {
       icon: MailIcon,
       title: 'Email',
-      href: 'https://mail.google.com/mail/u/0/?to=pnguyen27@usf.edu#inbox?compose=CllgCJvqKRRfdbbgHKFhqpqFDxQZwznkhjzgjnhJNdqSxrKDVpsJgzxtfpzjwVwkfztvqxKZPFL',
+      href: 'https://mail.google.com/mail/u/0/?to=phongng.swe@gmail.com#inbox?compose=CllgCJvqKRRfdbbgHKFhqpqFDxQZwznkhjzgjnhJNdqSxrKDVpsJgzxtfpzjwVwkfztvqxKZPFL',
       color: 'hover:text-primary'
     }
   ];
 
   return (
-    <section ref={containerRef} className="py-20 bg-transparent transition-colors duration-300">
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+    <section ref={containerRef} className="py-16 bg-transparent transition-colors duration-300 sm:py-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         <SectionTitle
           title="Let's Work Together"
           subtitle="I'm always interested in new opportunities and exciting projects. Let's discuss how we can bring your ideas to life."
         />
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
           {/* Contact Form */}
           <motion.div 
             style={{ y: formY }}
-            className="bg-white/80 dark:bg-slate-900/60 rounded-xl p-8 backdrop-blur-md border border-gray-100 dark:border-white/10 shadow-lg transition-colors duration-300"
+            className="rounded-2xl border border-gray-100 bg-slate-50/80 p-5 shadow-lg backdrop-blur-md transition-colors duration-300 dark:border-white/10 dark:bg-slate-900/60 sm:p-8"
           >
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send Me a Message</h3>
+            <h3 className="mb-6 text-xl font-bold text-gray-900 dark:text-white sm:text-2xl">Send Me a Message</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                     Name *
@@ -177,7 +194,7 @@ const ContactSection = () => {
                   id="message"
                   name="message"
                   required
-                  rows={5}
+                  rows={isCompactLayout ? 4 : 5}
                   value={formData.message}
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-gray-300 dark:border-white/20 dark:bg-white/5 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-vertical"
@@ -215,29 +232,29 @@ const ContactSection = () => {
           {/* Contact Information */}
           <motion.div 
             style={{ y: infoY }}
-            className="space-y-8" 
+            className="space-y-6 sm:space-y-8" 
             id="contact-info"
           >
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Get In Touch</h3>
-              <p className="text-gray-600 dark:text-gray-200 text-lg leading-relaxed mb-8 transition-colors duration-300">
+              <h3 className="mb-4 text-xl font-bold text-gray-900 dark:text-white sm:mb-6 sm:text-2xl">Get In Touch</h3>
+              <p className="mb-6 text-base leading-relaxed text-gray-600 transition-colors duration-300 dark:text-gray-200 sm:mb-8 sm:text-lg">
                 I'm currently available for freelance work and full-time opportunities. 
                 Whether you have a question or just want to say hi, I'll try my best to get back to you!
               </p>
             </div>
 
             {/* Contact Methods */}
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {contactMethods.map((method, index) => (
-                <div key={index} className="flex items-center space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                <div key={index} className="flex items-start space-x-3 sm:space-x-4">
+                  <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 sm:h-12 sm:w-12">
                     <method.icon size={20} className="text-primary dark:text-primary-light" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <div className="font-medium text-gray-900 dark:text-white">{method.title}</div>
                     <a
                       href={method.href}
-                      className="text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light transition-colors"
+                      className="break-words text-gray-600 transition-colors hover:text-primary dark:text-gray-400 dark:hover:text-primary-light"
                     >
                       {method.value}
                     </a>
@@ -249,7 +266,7 @@ const ContactSection = () => {
             {/* Social Links */}
             <div className="pt-8 border-t border-gray-200 dark:border-white/10">
               <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Connect With Me</h4>
-              <div className="flex space-x-4">
+              <div className="flex flex-wrap gap-4">
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}

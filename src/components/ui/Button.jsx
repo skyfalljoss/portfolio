@@ -9,7 +9,7 @@ const Button = ({
   className = '',
   ...props 
 }) => {
-  const baseClasses = 'inline-flex items-center justify-center space-x-2 font-medium rounded-lg transition-all duration-200 cursor-pointer';
+  const baseClasses = 'inline-flex items-center justify-center gap-2 text-center font-medium rounded-lg transition-all duration-200 cursor-pointer';
   
   const variants = {
     primary: 'bg-primary text-white hover:bg-orange-600',
@@ -20,8 +20,8 @@ const Button = ({
 
   const sizes = {
     sm: 'px-4 py-2 text-sm',
-    md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-lg'
+    md: 'px-5 py-3 text-sm sm:px-6 sm:text-base',
+    lg: 'px-6 py-3.5 text-base sm:px-8 sm:py-4 sm:text-lg'
   };
 
   const disabledClasses = disabled 

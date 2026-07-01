@@ -2,21 +2,22 @@ import React from 'react';
 import SectionTitle from '../components/common/SectionTitle';
 import { personalInfo } from '../data/personalInfo';
 import ContactSection from '../components/features/ContactSection';
+import TechStackCard from '../components/features/TechStackCard';
 
 const AboutPage = () => {
   const { aboutTitle, aboutDescription, aboutImage, skills } = personalInfo;
 
   return (
     <div className="pt-20 bg-transparent transition-colors duration-300">
-      <div className="max-w-6xl mx-auto px-6 py-16">
+      <div className="max-w-6xl mx-auto px-4 py-12 sm:px-6 sm:py-16">
         <SectionTitle
           title="About Me"
           subtitle="A little bit about my journey, skills, and experience."
         />
 
         {/* Introduction Section */}
-        <div className="grid md:grid-cols-5 gap-12 items-center mb-24">
-          <div className="md:col-span-2">
+        <div className="mb-16 grid items-center gap-8 md:mb-24 md:grid-cols-5 md:gap-12">
+          <div className="mx-auto w-full max-w-md md:col-span-2">
             <img 
               src={aboutImage}
               alt="Phong Nguyen"
@@ -24,9 +25,9 @@ const AboutPage = () => {
             />
           </div>
           <div className="md:col-span-3">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{aboutTitle}</h2>
+            <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">{aboutTitle}</h2>
             {aboutDescription.map((paragraph, index) => (
-              <p key={index} className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+              <p key={index} className="mb-4 text-base leading-relaxed text-gray-600 dark:text-gray-300 sm:text-lg">
                 {paragraph}
               </p>
             ))}
@@ -34,20 +35,8 @@ const AboutPage = () => {
         </div>
 
         {/* My Skills Section */}
-        <div className="mb-24">
-          <SectionTitle.Small title="My Skills" />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {Object.entries(skills).map(([category, skillList]) => (
-              <div key={category} className="bg-gray-50/80 dark:bg-white/5 border border-gray-100 dark:border-white/10 backdrop-blur-sm p-6 rounded-lg transition-colors duration-300">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 capitalize">{category}</h3>
-                <ul className="space-y-2">
-                  {skillList.map((skill, index) => (
-                    <li key={index} className="text-gray-600 dark:text-gray-300">{skill}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+        <div className="mb-16 sm:mb-24">
+          <TechStackCard rings={skills.rings} connections={skills.connections} />
         </div>
         {/* Contact Section */}
       <ContactSection />

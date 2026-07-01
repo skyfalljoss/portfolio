@@ -1,0 +1,46 @@
+{
+  "instincts": [
+    {
+      "trigger": "When updating profile, resume, project, or contact content in this portfolio",
+      "action": "Edit the source data module in `src/data/` first and keep components focused on rendering that data.",
+      "confidence": 0.9,
+      "source": "git-history-analysis"
+    },
+    {
+      "trigger": "When changing navigation, section layout, or visual styling",
+      "action": "Validate both mobile and desktop behavior together with light and dark theme states before considering the change complete.",
+      "confidence": 0.88,
+      "source": "git-history-analysis"
+    },
+    {
+      "trigger": "When adding viewport-dependent UI behavior in React",
+      "action": "Use component-local state plus `matchMedia` inside `useEffect`, including a fallback for older listener APIs if the file already follows that pattern.",
+      "confidence": 0.78,
+      "source": "git-history-analysis"
+    },
+    {
+      "trigger": "When writing async UI flows like the contact form or theme persistence",
+      "action": "Keep side effects explicit, clear stale status before retry, and show loading or error state instead of silently failing.",
+      "confidence": 0.81,
+      "source": "git-history-analysis"
+    },
+    {
+      "trigger": "When adding external links or icon-only actions",
+      "action": "Use `rel=\"noopener noreferrer\"` for new-tab links and add an `aria-label` for icon-only controls.",
+      "confidence": 0.86,
+      "source": "git-history-analysis"
+    },
+    {
+      "trigger": "When finishing a non-trivial repo change",
+      "action": "Run `npm run lint` and `npm run build` because this project has no configured test runner.",
+      "confidence": 0.93,
+      "source": "git-history-analysis"
+    },
+    {
+      "trigger": "When preparing a commit in this repository",
+      "action": "Prefer a descriptive conventional-style subject such as `feat:`, `style:`, or `chore:` and avoid vague one-word summaries.",
+      "confidence": 0.67,
+      "source": "git-history-analysis"
+    }
+  ]
+}

@@ -8,7 +8,7 @@ const Card = ({
   onClick,
   ...props 
 }) => {
-  const baseClasses = 'bg-white/80 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md border border-gray-100 dark:border-white/10 rounded-xl shadow-lg overflow-hidden transition-all duration-300';
+  const baseClasses = 'bg-slate-50/80 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md border border-gray-200/60 dark:border-white/10 rounded-xl shadow-lg overflow-hidden transition-all duration-300';
   
   const hoverClasses = hover 
     ? 'hover:shadow-xl hover:-translate-y-1 cursor-pointer' 

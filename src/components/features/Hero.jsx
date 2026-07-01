@@ -1,11 +1,32 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Button from '../ui/Button';
 import { personalInfo } from '../../data/personalInfo.js';
 import {ArrowRightIcon, DownloadIcon} from '../icons/icons.jsx'
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 
 
 const Hero = ({ setCurrentPage }) => {
+  const containerRef = useRef(null);
+  const prefersReducedMotion = useReducedMotion();
+  const [isCompactLayout, setIsCompactLayout] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 1023px)');
+    const handleChange = (event) => {
+      setIsCompactLayout(event.matches);
+    };
+
+    setIsCompactLayout(mediaQuery.matches);
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    }
+
+    mediaQuery.addListener(handleChange);
+    return () => mediaQuery.removeListener(handleChange);
+  }, []);
+
   const handleResumeDownload = () => {
     const link = document.createElement('a');
     link.href = personalInfo.resume.url;
@@ -14,63 +35,87 @@ const Hero = ({ setCurrentPage }) => {
     link.click();
     document.body.removeChild(link);
   };
-
-  const containerRef = useRef(null);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
   });
 
-  const imageX = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, 30, 120, 350]);
-  const imageY = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, -120, -220, -300]);
-  const imageOpacity = useTransform(scrollYProgress, [0, 0.5, 0.9], [1, 0.8, 0]);
+  const disableParallax = prefersReducedMotion || isCompactLayout;
 
-  const textX = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, -30, -120, -350]);
-  const textY = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [0, -120, -220, -300]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.5, 0.9], [1, 0.8, 0]);
+  const imageX = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.6, 1],
+    disableParallax ? [0, 0, 0, 0] : [0, 30, 120, 350]
+  );
+  const imageY = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.6, 1],
+    disableParallax ? [0, 0, 0, 0] : [0, -120, -220, -300]
+  );
+  const imageOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.5, 0.9],
+    disableParallax ? [1, 1, 1] : [1, 0.8, 0]
+  );
+
+  const textX = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.6, 1],
+    disableParallax ? [0, 0, 0, 0] : [0, -30, -120, -350]
+  );
+  const textY = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.6, 1],
+    disableParallax ? [0, 0, 0, 0] : [0, -120, -220, -300]
+  );
+  const textOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.5, 0.9],
+    disableParallax ? [1, 1, 1] : [1, 0.8, 0]
+  );
 
   return (
-    <section 
+    <section
       ref={containerRef}
-      className="min-h-screen flex items-center pt-20 border-b border-gray-200 dark:border-white/10 transition-colors duration-300"
+      className="flex min-h-screen items-center border-b border-gray-200 pt-24 pb-14 transition-colors duration-300 dark:border-white/10 sm:pb-16 md:pt-20"
     >
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-        {/* Content Side */}
-        <motion.div 
-          className="space-y-6 animate-fade-in relative z-10"
+      <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 md:grid-cols-2 md:gap-12 md:px-6">
+        <motion.div
+          className="order-2 relative z-10 space-y-6 text-center animate-fade-in md:order-1 md:text-left"
           style={{ x: textX, y: textY, opacity: textOpacity }}
         >
           <div className="space-y-4">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white leading-tight transition-colors duration-300">
+            <h1 className="text-4xl font-bold leading-tight text-gray-900 transition-colors duration-300 dark:text-white sm:text-5xl md:text-6xl">
               Hello, I am{' '}
               <br />
               <span className="text-primary">{personalInfo.name}</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-200 font-medium transition-colors duration-300">
+            <p className="text-lg font-medium text-gray-600 transition-colors duration-300 dark:text-gray-200 sm:text-xl md:text-2xl">
               {personalInfo.title}
             </p>
           </div>
 
-          <p className="text-lg text-gray-500 dark:text-gray-400 leading-relaxed max-w-lg transition-colors duration-300">
+          <p className="mx-auto max-w-lg text-base leading-relaxed text-gray-500 transition-colors duration-300 dark:text-gray-400 sm:text-lg md:mx-0">
             {personalInfo.heroDescription}
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-6 mb-8">
-            <Button 
+          <div className="mb-6 flex flex-col gap-3 pt-2 sm:mb-8 sm:flex-row sm:justify-center sm:gap-4 sm:pt-4 md:justify-start">
+            <Button
               variant="secondary"
               size="lg"
               onClick={() => setCurrentPage('about')}
+              className="w-full sm:w-auto"
             >
               <span>Learn More</span>
               <ArrowRightIcon size={16} />
             </Button>
             
-            <Button 
+            <Button
               variant="outline"
               size="lg"
               onClick={handleResumeDownload}
+              className="w-full sm:w-auto"
             >
               <DownloadIcon size={16} />
               <span>Download Resume</span>
@@ -78,19 +123,17 @@ const Hero = ({ setCurrentPage }) => {
           </div>
         </motion.div>
 
-        {/* Image Side */}
-        <div className="relative animate-fade-in-delay">
-          <motion.div 
+        <div className="order-1 mx-auto w-full max-w-sm animate-fade-in-delay sm:max-w-md md:order-2">
+          <motion.div
             className="relative z-10"
             style={{ x: imageX, y: imageY, opacity: imageOpacity }}
           >
-            <img 
+            <img
               src={personalInfo.heroImage}
               alt={personalInfo.name}
-              className="w-full max-w-md mx-auto rounded-2xl shadow-2xl relative z-10"
+              className="relative z-10 mx-auto w-full rounded-2xl object-cover shadow-2xl md:max-w-md"
             />
-            {/* Ambient glow behind image */}
-            <div className="absolute inset-0 bg-primary/20 blur-3xl -z-10 rounded-full mix-blend-multiply dark:mix-blend-screen transform scale-90"></div>
+            <div className="absolute inset-0 -z-10 rounded-full bg-primary/20 blur-3xl mix-blend-multiply transform scale-90 dark:mix-blend-screen"></div>
           </motion.div>
         </div>
       </div>
